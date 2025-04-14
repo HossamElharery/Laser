@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Language, LanguageService } from '../../../../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-language-switcher',
@@ -21,6 +22,14 @@ import { CommonModule } from '@angular/common';
     .language-switcher {
       display: flex;
       gap: 8px;
+      padding: 10px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
 
     button {
@@ -38,19 +47,29 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class LanguageSwitcherComponent {
+export class LanguageSwitcherComponent implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
+  private destroy$ = new Subject<void>();
 
   currentLanguage = this.languageService.currentLanguage;
   availableLanguages = this.languageService.getAvailableLanguages();
 
-  constructor() {
-    this.languageService.language$.subscribe(lang => {
-      this.currentLanguage = lang;
-    });
+  ngOnInit() {
+    this.languageService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(lang => {
+        this.currentLanguage = lang;
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   switchLanguage(lang: Language): void {
-    this.languageService.switchLanguage(lang);
+    if (lang !== this.currentLanguage) {
+      this.languageService.switchLanguage(lang);
+    }
   }
 }

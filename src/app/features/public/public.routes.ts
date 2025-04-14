@@ -1,36 +1,28 @@
-import { Route } from '@angular/router';
-import { PublicComponent } from './public/public.component';
+import { Routes } from '@angular/router';
 
-export default [
+export const routes: Routes = [
   {
     path: '',
-    component: PublicComponent,
-    children: [
-      {
-        path: '',
-        loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
-        title: 'Home'
-      },
-      {
-        path: 'about',
-        loadComponent: () => import('./about/about.component').then(c => c.AboutComponent),
-        title: 'About Us'
-      },
-      {
-        path: 'clinics',
-        loadComponent: () => import('./clinics/clinics.component').then(c => c.ClinicsComponent),
-        title: 'Clinics'
-      },
-      {
-        path: 'blog',
-        loadComponent: () => import('./blog/blog.component').then(c => c.BlogComponent),
-        title: 'Blog'
-      },
-      {
-        path: 'contact',
-        loadComponent: () => import('./contact/contact.component').then(c => c.ContactComponent),
-        title: 'Contact Us'
-      }
-    ]
+    loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+  },
+  {
+    path: 'blog',
+    loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent)
+  },
+  {
+    path: 'clinics',
+    loadComponent: () => import('./clinics/clinics.component').then(m => m.ClinicsComponent)
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
-] as Route[];
+];

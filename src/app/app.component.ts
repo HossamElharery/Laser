@@ -1,43 +1,44 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, Renderer2, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
 import { LanguageService } from './core/services/language.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TranslateModule, CommonModule],
-  template: `
-    <div [dir]="isRtl ? 'rtl' : 'ltr'">
-      <router-outlet></router-outlet>
-    </div>
-  `,
-  styles: [`
-    :host {
-      display: block;
-      min-height: 100vh;
-    }
-  `]
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
+  private renderer = inject(Renderer2);
   private destroy$ = new Subject<void>();
+  private platformId = inject(PLATFORM_ID);
 
-  isRtl = false;
+  isRtl = this.languageService.isRtl;
 
-  ngOnInit(): void {
-    // Use takeUntil to automatically unsubscribe when component is destroyed
+  ngOnInit() {
+    // Subscribe to language changes
     this.languageService.language$
       .pipe(takeUntil(this.destroy$))
       .subscribe(lang => {
-        this.isRtl = lang === 'ar';
+        this.isRtl = this.languageService.isRtl;
+
+        // Only manipulate document in browser environment
+        if (isPlatformBrowser(this.platformId)) {
+          // Set direction attribute on html element
+          const dir = this.isRtl ? 'rtl' : 'ltr';
+          this.renderer.setAttribute(document.documentElement, 'dir', dir);
+
+          // Also update the lang attribute
+          this.renderer.setAttribute(document.documentElement, 'lang', lang);
+        }
       });
   }
 
-  ngOnDestroy(): void {
-    // Clean up subscriptions to prevent memory leaks
+  ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }

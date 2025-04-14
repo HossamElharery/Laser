@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher/language-switcher.component';
 
 interface Feature {
@@ -19,7 +19,7 @@ interface Service {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent,RouterModule],
+  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -76,20 +76,10 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(
-    private translateService: TranslateService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
-    console.log('Current language:', this.translateService.currentLang);
-  }
-
-  onLanguageChange(lang: string): void {
-    // Get current route path without language prefix
-    const urlSegments = this.router.url.split('/');
-    const pathWithoutLang = urlSegments.slice(2).join('/');
-
-    // Navigate to same route with new language prefix
-    this.router.navigate([`/${lang}/${pathWithoutLang}`]);
+    // Remove logging to prevent console spam
+    // translateService is already configured by the LanguageService
   }
 }
