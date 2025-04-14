@@ -1,0 +1,112 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">{{ 'HOME.HERO.TITLE' | translate }}</h1>
+          <p class="hero-subtitle">{{ 'HOME.HERO.SUBTITLE' | translate }}</p>
+          <div class="hero-buttons">
+            <a [routerLink]="'/services'" class="btn btn-primary">{{ 'HOME.HERO.PRIMARY_BTN' | translate }}</a>
+            <a [routerLink]="'/contact'" class="btn btn-outline">{{ 'HOME.HERO.SECONDARY_BTN' | translate }}</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- Placeholder for hero image from Figma -->
+          <div class="image-placeholder">
+            <div class="placeholder-content">
+              <span>{{ 'HOME.HERO.IMAGE_ALT' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>{{ 'HOME.FEATURES.TITLE' | translate }}</h2>
+        <p>{{ 'HOME.FEATURES.SUBTITLE' | translate }}</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-icon">
+            <i [class]="feature.icon"></i>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <!-- Placeholder for about image from Figma -->
+          <div class="image-placeholder">
+            <div class="placeholder-content">
+              <span>{{ 'HOME.ABOUT.IMAGE_ALT' | translate }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>{{ 'HOME.ABOUT.TITLE' | translate }}</h2>
+          <p>{{ 'HOME.ABOUT.CONTENT' | translate }}</p>
+          <ul class="about-list">
+            <li *ngFor="let item of aboutItems">
+              <i class="icon-check"></i>
+              <span>{{ item }}</span>
+            </li>
+          </ul>
+          <a [routerLink]="'/about'" class="btn btn-primary">{{ 'HOME.ABOUT.BTN' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>{{ 'HOME.SERVICES.TITLE' | translate }}</h2>
+        <p>{{ 'HOME.SERVICES.SUBTITLE' | translate }}</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of services">
+          <div class="service-image">
+            <!-- Placeholder for service image from Figma -->
+            <div class="image-placeholder">
+              <div class="placeholder-content">
+                <i [class]="service.icon"></i>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+            <a [routerLink]="'/services'" class="service-link">{{ 'HOME.SERVICES.LEARN_MORE' | translate }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>{{ 'HOME.CTA.TITLE' | translate }}</h2>
+        <p>{{ 'HOME.CTA.SUBTITLE' | translate }}</p>
+        <a [routerLink]="'/contact'" class="btn btn-light">{{ 'HOME.CTA.BTN' | translate }}</a>
+      </div>
+    </div>
+  </section>
+</div>
+<app-language-switcher></app-language-switcher>

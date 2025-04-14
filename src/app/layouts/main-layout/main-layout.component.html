@@ -1,0 +1,42 @@
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a [routerLink]="['/', currentLanguage]">BookingLaser</a>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a [routerLink]="['/', currentLanguage]">{{ 'common.home' | translate }}</a></li>
+        <li><a [routerLink]="['/', currentLanguage, 'about']">{{ 'common.about' | translate }}</a></li>
+        <li><a [routerLink]="['/', currentLanguage, 'clinics']">{{ 'common.clinics' | translate }}</a></li>
+        <li><a [routerLink]="['/', currentLanguage, 'blog']">{{ 'common.blog' | translate }}</a></li>
+        <li><a [routerLink]="['/', currentLanguage, 'contact']">{{ 'common.contact' | translate }}</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="auth-buttons">
+        <a class="login-button" [routerLink]="['/', currentLanguage, 'auth', 'login']">
+          {{ 'common.login' | translate }}
+        </a>
+        <a class="signup-button" [routerLink]="['/', currentLanguage, 'auth', 'signup']">
+          {{ 'common.signup' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="copyright">
+        &copy; 2024 BookingLaser. {{ 'footer.allRightsReserved' | translate }}
+      </div>
+    </div>
+  </div>
+</footer>

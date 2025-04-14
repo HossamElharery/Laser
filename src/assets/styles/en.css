@@ -1,0 +1,34 @@
+/* English specific styles */
+html, body {
+  direction: ltr;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.rtl-flip {
+  transform: none;
+}
+
+/* English specific overrides */
+.start-aligned {
+  text-align: left;
+}
+
+.end-aligned {
+  text-align: right;
+}
+
+.margin-start {
+  margin-left: 10px;
+}
+
+.margin-end {
+  margin-right: 10px;
+}
+
+.padding-start {
+  padding-left: 10px;
+}
+
+.padding-end {
+  padding-right: 10px;
+}

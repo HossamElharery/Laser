@@ -1,0 +1,39 @@
+/* Arabic specific styles */
+html, body {
+  direction: rtl;
+  font-family: 'Cairo', 'Droid Arabic Kufi', sans-serif;
+}
+
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Arabic specific overrides */
+.start-aligned {
+  text-align: right;
+}
+
+.end-aligned {
+  text-align: left;
+}
+
+.margin-start {
+  margin-right: 10px;
+}
+
+.margin-end {
+  margin-left: 10px;
+}
+
+.padding-start {
+  padding-right: 10px;
+}
+
+.padding-end {
+  padding-left: 10px;
+}
+
+/* Additional Arabic specific font adjustments */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', 'Droid Arabic Kufi', sans-serif;
+}

@@ -1,0 +1,14 @@
+<header>
+  <nav>
+    <a [routerLink]="['/', currentLanguage]">{{ 'common.home' | translate }}</a>
+    <a [routerLink]="['/', currentLanguage, 'about']">{{ 'common.about' | translate }}</a>
+    <a [routerLink]="['/', currentLanguage, 'clinics']">{{ 'common.clinics' | translate }}</a>
+    <a [routerLink]="['/', currentLanguage, 'blog']">{{ 'common.blog' | translate }}</a>
+    <a [routerLink]="['/', currentLanguage, 'contact']">{{ 'common.contact' | translate }}</a>
+
+    <div class="auth-links">
+      <a [routerLink]="['/', currentLanguage, 'auth', 'login']">{{ 'common.login' | translate }}</a>
+      <a [routerLink]="['/', currentLanguage, 'auth', 'signup']">{{ 'common.signup' | translate }}</a>
+    </div>
+  </nav>
+</header>

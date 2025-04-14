@@ -1,0 +1,57 @@
+{
+  "common": {
+    "menu": "Menu",
+    "login": "Login",
+    "signup": "Sign up",
+    "home": "Home",
+    "about": "About us",
+    "clinics": "Clinics",
+    "blog": "Blog",
+    "contact": "Contact us",
+    "search": "Search",
+    "bookAppointment": "Book Appointment",
+    "writeReview": "Write Review",
+    "viewAll": "View All",
+    "letsStart": "Let's Start",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "E-Mail",
+      "password": "Password",
+      "forgetPassword": "Forget Password?",
+      "noAccount": "Don't have an account?",
+      "signupNow": "Sign up now"
+    },
+    "signup": {
+      "title": "Create Account",
+      "fullName": "Full Name",
+      "email": "E-mail",
+      "password": "Password",
+      "gender": "Gender",
+      "chooseAccountType": "Choose Account Type",
+      "clinic": "Clinic",
+      "customer": "Customer",
+      "clinicName": "Clinic Name",
+      "clinicAddress": "Clinic Address",
+      "haveAccount": "Have an account?",
+      "selectAccountType": "Select the Account Type That Best Fits Your Goals and Start Your Journey With Us"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Connecting You to Exceptional Laser Care",
+      "subtitle": "At BookingLaser.com, we're on a mission to simplify the journey to advanced laser treatments.",
+      "searchTitle": "Search For Hospital",
+      "location": "Hospital Location",
+      "laserType": "Laser Type",
+      "machineType": "Machine Type"
+    },
+    "clinics": {
+      "title": "Discover Top Clinics Near You",
+      "description": "Browse trusted clinics offering advanced laser treatments. Compare services, read reviews, and choose the best care tailored to your needs."
+    }
+  }
+}
