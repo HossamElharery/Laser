@@ -1,15 +1,15 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageService } from '../../core/services/language.service';
+import { LanguageService, Language } from '../../core/services/language.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.scss',
-  imports: [CommonModule, RouterOutlet, RouterLink, TranslateModule],
+  styleUrls: ['./main-layout.component.scss'],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TranslateModule],
   standalone: true
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
@@ -29,5 +29,11 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  switchLanguage(lang: Language): void {
+    if (lang !== this.currentLanguage) {
+      this.languageService.switchLanguage(lang);
+    }
   }
 }

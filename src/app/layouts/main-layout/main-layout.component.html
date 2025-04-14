@@ -1,41 +1,92 @@
-<header class="main-header">
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container">
-    <div class="logo">
-      <a [routerLink]="['/', currentLanguage]">BookingLaser</a>
-    </div>
+    <!-- Logo -->
+    <a class="navbar-brand" [routerLink]="['/', currentLanguage]">
+      BookingLaser
+    </a>
 
-    <nav class="main-nav">
-      <ul>
-        <li><a [routerLink]="['/', currentLanguage]">{{ 'common.home' | translate }}</a></li>
-        <li><a [routerLink]="['/', currentLanguage, 'about']">{{ 'common.about' | translate }}</a></li>
-        <li><a [routerLink]="['/', currentLanguage, 'clinics']">{{ 'common.clinics' | translate }}</a></li>
-        <li><a [routerLink]="['/', currentLanguage, 'blog']">{{ 'common.blog' | translate }}</a></li>
-        <li><a [routerLink]="['/', currentLanguage, 'contact']">{{ 'common.contact' | translate }}</a></li>
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Items -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/', currentLanguage]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            {{ 'common.home' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/', currentLanguage, 'about']" routerLinkActive="active">
+            {{ 'common.about' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/', currentLanguage, 'clinics']" routerLinkActive="active">
+            {{ 'common.clinics' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/', currentLanguage, 'blog']" routerLinkActive="active">
+            {{ 'common.blog' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/', currentLanguage, 'contact']" routerLinkActive="active">
+            {{ 'common.contact' | translate }}
+          </a>
+        </li>
       </ul>
-    </nav>
 
-    <div class="header-actions">
-      <div class="auth-buttons">
-        <a class="login-button" [routerLink]="['/', currentLanguage, 'auth', 'login']">
+      <!-- Auth Buttons -->
+      <div class="d-flex">
+        <a class="btn btn-outline-primary me-2" [routerLink]="['/', currentLanguage, 'auth', 'login']">
           {{ 'common.login' | translate }}
         </a>
-        <a class="signup-button" [routerLink]="['/', currentLanguage, 'auth', 'signup']">
+        <a class="btn btn-primary" [routerLink]="['/', currentLanguage, 'auth', 'signup']">
           {{ 'common.signup' | translate }}
         </a>
       </div>
     </div>
   </div>
-</header>
+</nav>
 
-<main>
+<!-- Main Content -->
+<main class="container py-4">
   <router-outlet></router-outlet>
 </main>
 
-<footer class="main-footer">
+<!-- Bootstrap Footer -->
+<footer class="bg-light py-4 mt-auto border-top">
   <div class="container">
-    <div class="footer-bottom">
-      <div class="copyright">
-        &copy; 2024 BookingLaser. {{ 'footer.allRightsReserved' | translate }}
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0">&copy; 2024 BookingLaser. {{ 'footer.allRightsReserved' | translate }}</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <!-- Language Switcher -->
+        <div class="btn-group" role="group" aria-label="Language Switcher">
+          <button
+            type="button"
+            class="btn btn-sm"
+            [class.btn-primary]="currentLanguage === 'en'"
+            [class.btn-outline-primary]="currentLanguage !== 'en'"
+            (click)="switchLanguage('en')">
+            English
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm"
+            [class.btn-primary]="currentLanguage === 'ar'"
+            [class.btn-outline-primary]="currentLanguage !== 'ar'"
+            (click)="switchLanguage('ar')">
+            العربية
+          </button>
+        </div>
       </div>
     </div>
   </div>

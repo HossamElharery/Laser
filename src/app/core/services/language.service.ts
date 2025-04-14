@@ -1,5 +1,5 @@
 import { Injectable, inject, PLATFORM_ID } from '@angular/core';
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, Location } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
@@ -14,10 +14,13 @@ export class LanguageService {
   private translate = inject(TranslateService);
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
+  private location = inject(Location);
 
   private readonly LANGUAGE_KEY = 'SELECTED_LANGUAGE';
   private readonly availableLanguages: Language[] = ['en', 'ar'];
-  private languageSubject = new BehaviorSubject<Language>(this.getInitialLanguage());
+
+  // Initialize with language from URL first, then fallback to other methods
+  private languageSubject = new BehaviorSubject<Language>(this.getLanguageFromUrl() || this.getInitialLanguage());
 
   readonly language$ = this.languageSubject.asObservable();
 
@@ -26,19 +29,14 @@ export class LanguageService {
     this.translate.addLangs(this.availableLanguages);
     this.translate.setDefaultLang('en');
 
-    // Add error handler for translation errors
-    this.translate.onLangChange.subscribe(() => {
-      // This helps clear any previous errors
-    });
-
-    // Apply initial language
+    // Apply initial language - URL takes precedence, don't navigate
     const currentLang = this.languageSubject.value;
     this.applyLanguage(currentLang, false);
 
-    // Force load default language to ensure it's available
-    this.translate.use('en').subscribe({
-      next: () => console.log('Default language loaded'),
-      error: (err) => console.error('Error loading default language', err)
+    // Force load current language to ensure it's available
+    this.translate.use(currentLang).subscribe({
+      next: () => console.log(`Language ${currentLang} loaded successfully`),
+      error: (err) => console.error(`Error loading language ${currentLang}`, err)
     });
   }
 
@@ -66,6 +64,19 @@ export class LanguageService {
     if (this.availableLanguages.includes(language) && language !== this.currentLanguage) {
       this.applyLanguage(language, false);
     }
+  }
+
+  private getLanguageFromUrl(): Language | null {
+    if (isPlatformBrowser(this.platformId)) {
+      // Extract language from URL path
+      const path = this.location.path();
+      const match = path.match(/^\/(en|ar)(\/|$)/);
+      if (match && this.availableLanguages.includes(match[1] as Language)) {
+        // Found a valid language in the URL
+        return match[1] as Language;
+      }
+    }
+    return null;
   }
 
   private getInitialLanguage(): Language {
@@ -136,6 +147,7 @@ export class LanguageService {
   }
 
   private loadLanguageStyle(language: Language): void {
+    // Exit early if not in browser environment
     if (!isPlatformBrowser(this.platformId)) return;
 
     try {

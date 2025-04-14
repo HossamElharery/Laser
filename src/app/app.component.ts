@@ -2,6 +2,7 @@ import { Component, inject, OnInit, OnDestroy, Renderer2, PLATFORM_ID } from '@a
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LanguageService } from './core/services/language.service';
+import { BootstrapService } from './core/services/bootstrap.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -13,6 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
+  private bootstrapService = inject(BootstrapService);
   private renderer = inject(Renderer2);
   private destroy$ = new Subject<void>();
   private platformId = inject(PLATFORM_ID);
@@ -20,6 +22,9 @@ export class AppComponent implements OnInit, OnDestroy {
   isRtl = this.languageService.isRtl;
 
   ngOnInit() {
+    // Initialize Bootstrap with proper RTL/LTR support
+    this.bootstrapService.initialize();
+
     // Subscribe to language changes
     this.languageService.language$
       .pipe(takeUntil(this.destroy$))

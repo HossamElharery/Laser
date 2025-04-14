@@ -1,0 +1,5 @@
+// Arabic (RTL) Bootstrap configuration
+$enable-rtl: true;
+$rtl-prefix: true;
+
+@import "bootstrap/scss/bootstrap";

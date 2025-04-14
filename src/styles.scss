@@ -1,1 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+// Global styles to enhance RTL/LTR handling with Bootstrap
+:root {
+  --direction: ltr;
+  --start: left;
+  --end: right;
+  --text-align-start: left;
+  --text-align-end: right;
+}
+
+[dir="rtl"] {
+  --direction: rtl;
+  --start: right;
+  --end: left;
+  --text-align-start: right;
+  --text-align-end: left;
+}
+
+// Extra multilingual utility classes
+.margin-start {
+  margin-inline-start: var(--bs-space);
+}
+
+.margin-end {
+  margin-inline-end: var(--bs-space);
+}
+
+.padding-start {
+  padding-inline-start: var(--bs-space);
+}
+
+.padding-end {
+  padding-inline-end: var(--bs-space);
+}
+
+.text-start {
+  text-align: var(--text-align-start) !important;
+}
+
+.text-end {
+  text-align: var(--text-align-end) !important;
+}
+
+.border-start {
+  border-inline-start: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+
+.border-end {
+  border-inline-end: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+
+// Make focus visible for all interactive elements
+:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+// Fix for Bootstrap dropdowns in RTL
+[dir="rtl"] .dropdown-menu {
+  text-align: right;
+}
+
+// Add base styling for <html> and <body>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Override Bootstrap variables for rtl/ltr handling
+[dir="rtl"] .me-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+[dir="rtl"] .ms-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+// Fix for input groups in RTL
+[dir="rtl"] .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-right: -1px;
+  margin-left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: var(--bs-border-radius);
+  border-bottom-left-radius: var(--bs-border-radius);
+}
+
+[dir="rtl"] .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+[dir="rtl"] .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: var(--bs-border-radius);
+  border-bottom-right-radius: var(--bs-border-radius);
+}

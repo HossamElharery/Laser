@@ -1,1 +1,101 @@
-<div>Login Component</div>
+<div class="text-center mb-4">
+  <h4 class="fw-bold">{{ 'auth.login.title' | translate }}</h4>
+  <p class="text-muted">{{ 'auth.login.subtitle' | translate }}</p>
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- Email Input -->
+  <div class="mb-3">
+    <label for="email" class="form-label">{{ 'auth.login.email' | translate }}</label>
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="bi bi-envelope"></i>
+      </span>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        [placeholder]="'auth.login.emailPlaceholder' | translate"
+        [ngClass]="{'is-invalid': isFieldInvalid('email')}"
+      >
+    </div>
+    <div *ngIf="isFieldInvalid('email')" class="invalid-feedback d-block">
+      <span *ngIf="loginForm.get('email')?.errors?.['required']">
+        {{ 'validation.required' | translate }}
+      </span>
+      <span *ngIf="loginForm.get('email')?.errors?.['email']">
+        {{ 'validation.invalidEmail' | translate }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Password Input -->
+  <div class="mb-3">
+    <label for="password" class="form-label">{{ 'auth.login.password' | translate }}</label>
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="bi bi-lock"></i>
+      </span>
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        [placeholder]="'auth.login.passwordPlaceholder' | translate"
+        [ngClass]="{'is-invalid': isFieldInvalid('password')}"
+      >
+      <button
+      aria-label="Name"
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="togglePasswordVisibility()"
+        tabindex="-1"
+      >
+        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+      </button>
+    </div>
+    <div *ngIf="isFieldInvalid('password')" class="invalid-feedback d-block">
+      <span *ngIf="loginForm.get('password')?.errors?.['required']">
+        {{ 'validation.required' | translate }}
+      </span>
+      <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+        {{ 'validation.minLength' | translate:{ length: 6 } }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Remember Me & Forgot Password -->
+  <div class="d-flex justify-content-between mb-4">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" formControlName="rememberMe" id="rememberMe">
+      <label class="form-check-label" for="rememberMe">
+        {{ 'auth.login.rememberMe' | translate }}
+      </label>
+    </div>
+    <a [routerLink]="['../reset-password']" class="text-decoration-none">
+      {{ 'auth.login.forgetPassword' | translate }}
+    </a>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="mb-4">
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="loginForm.invalid || isLoading"
+    >
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      {{ 'auth.login.title' | translate }}
+    </button>
+  </div>
+
+  <!-- No Account -->
+  <div class="text-center">
+    <p>{{ 'auth.login.noAccount' | translate }}
+      <a [routerLink]="['../signup']" class="text-decoration-none">
+        {{ 'auth.login.signupNow' | translate }}
+      </a>
+    </p>
+  </div>
+</form>
