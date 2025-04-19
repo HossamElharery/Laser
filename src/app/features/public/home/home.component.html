@@ -1,8 +1,59 @@
 <div class="home-container">
   <!-- Hero Section -->
-  <section class="hero-section">
+  <div class="laser-care-container row">
+    <!-- Left Panel -->
+    <div class="panel left-panel col-lg-6">
+      <div class="image-container">
+        <img src="../../../../assets/imgs/Hero_Image.png" alt="Woman with flower crown" class="panel-image">
+      </div>
+      <div class="content-container">
+        <h1 class="main-heading">Effortless laser care for everyone. Simple and easy.</h1>
+        <p class="subheading">Whether you're seeking advanced laser treatments or managing a clinic's services, BookingLaser.com simplifies the process.</p>
+
+        <div class="search-section">
+          <div class="search-container">
+            <div class="search-fields">
+              <div class="search-field">
+                <i class="icon-search"></i>
+                <input type="text" placeholder="Search For Hospital" class="search-input">
+              </div>
+              <div class="search-field">
+                <i class="icon-location"></i>
+                <input type="text" placeholder="Search For Hospital" class="search-input">
+              </div>
+            </div>
+            <button class="search-button">Search</button>
+          </div>
+          <!-- <div class="search-container">
+            <div class="search-input">
+              <i class="search-icon"></i>
+              <input type="text" placeholder="Search For Hospital">
+            </div>
+
+            <div class="search-input">
+              <i class="location-icon"></i>
+              <input type="text" placeholder="Search For Hospital">
+            </div>
+
+            <button class="search-button">Search</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="panel right-panel col-lg-6">
+      <div class="image-container">
+        <img src="../../../../assets/imgs/woman-with-natural-beauty-holding.png" alt="Woman smiling" class="panel-image">
+        <div class="star-decoration star-1"></div>
+        <div class="star-decoration star-2"></div>
+      </div>
+    </div>
+  </div>
+  <!-- <section class="hero-section">
     <div class="container">
       <div class="hero-content">
+        <img src="../../../../assets/imgs/Hero_Image.png" alt="">
         <div class="hero-text">
           <h1 class="hero-title">{{ 'HOME.HERO.TITLE' | translate }}</h1>
           <p class="hero-subtitle">{{ 'HOME.HERO.SUBTITLE' | translate }}</p>
@@ -12,7 +63,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <!-- Placeholder for hero image from Figma -->
+          <!-- Placeholder for hero image from Figma
           <div class="image-placeholder">
             <div class="placeholder-content">
               <span>{{ 'HOME.HERO.IMAGE_ALT' | translate }}</span>
@@ -21,8 +72,9 @@
         </div>
       </div>
     </div>
-  </section>
-
+  </section> -->
+<app-home-clinics></app-home-clinics>
+<app-how-it-works></app-how-it-works>
   <!-- Features Section -->
   <section class="features-section">
     <div class="container">

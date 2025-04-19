@@ -1,5 +1,5 @@
 // Color variables
-$primary-color: #0070f3;
+$primary-color: #002B60;
 $secondary-color: #6c63ff;
 $accent-color: #ff4081;
 $success-color: #28a745;
@@ -104,3 +104,22 @@ $z-index-tooltip: 1070;
 // RTL specific variables
 $rtl-direction: rtl;
 $ltr-direction: ltr;
+// ============================================
+// Main Colors
+$primary-blue: #1e4f8a;
+$white: #ffffff;
+$purple: #7A4EAB;
+
+// Text Colors
+$text-dark: #1a1a1a;
+$text-gray: #666666;
+$placeholder-color: #999999;
+
+// UI Colors
+$border-color: #dddddd;
+$icon-color: #888888;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;

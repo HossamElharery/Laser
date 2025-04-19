@@ -1,5 +1,218 @@
 @use "../../../../assets/scss/variables" as *;
+// ==============================
 
+.laser-care-container {
+  display: flex;
+  width: 100%;
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 20px;
+
+  &.left-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.right-panel {
+    background-color: $primary-blue;
+    img{
+      padding: 5rem 5rem 0 5rem;
+    }
+  }
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+
+  .panel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.content-container {
+  padding: 20px;
+  background-color: $white;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: $text-dark;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 14px;
+  color: $text-gray;
+  margin-bottom: 20px;
+}
+
+.search-section {
+  background-color: $primary-blue;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.dimension-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  span {
+    font-size: 12px;
+    color: $text-gray;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $purple;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.search-fields {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border-bottom: 1px solid white;
+  padding: 8px 12px;
+  height: 38px;
+}
+
+.icon-search, .icon-location {
+  color: white;
+  margin-right: 8px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+// If you're using font icons, use these styles
+.icon-search:before {
+  content: "\F52A"; // Replace with your actual icon content or use a proper icon font
+  font-family: bootstrap-icons!important;
+}
+
+.icon-location:before {
+  content: "\F3E8"; // Replace with your actual icon content or use a proper icon font
+  font-family: bootstrap-icons!important;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  color: #333;
+  border-radius: 40px;
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+.search-button {
+  background-color: white; // Replace with your variable
+  color: $primary-color;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 38px;
+  min-width: 100px;
+
+  &:hover {
+    background-color: darken(#1560bd, 5%);
+  }
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-fields {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+.star-decoration {
+  position: absolute;
+  background-color: rgba($white, 0.5);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+
+  &.star-1 {
+    width: 20px;
+    height: 20px;
+    top: 20%;
+    right: 30%;
+  }
+
+  &.star-2 {
+    width: 15px;
+    height: 15px;
+    top: 30%;
+    left: 20%;
+  }
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .laser-care-container {
+    flex-direction: column;
+  }
+
+  .panel {
+    height: 50vh;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+}
+// ==============================
 // Base styles
 .home-container {
   width: 100%;

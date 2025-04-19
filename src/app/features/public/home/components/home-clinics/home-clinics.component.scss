@@ -1,0 +1,227 @@
+// Main styles for the clinics component
+@import "../../../../../../assets/scss/variables.scss" ;
+
+// Typography
+.discover-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #002D62;
+  margin-bottom: 0;
+}
+
+// Navigation buttons
+.navigation-controls {
+  display: flex;
+  gap: 10px;
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #E5E7EB;
+    color: #002D62;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    &.next-btn{
+      background-color: $primary-color;
+      color: white;
+    }
+
+    &:hover {
+      background-color: #F3F4F6;
+    }
+
+    i {
+      font-size: 14px;
+    }
+  }
+}
+
+// View All button
+.view-all-btn {
+  background-color: #002D62;
+  border-radius: 9999px;
+  border: none;
+  padding: 10px 24px;
+  font-weight: 500;
+
+  &:hover {
+    background-color: darken(#002D62, 10%);
+  }
+}
+
+// Clinic description section
+.clinic-description {
+  padding: 20px 0;
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4B5563;
+    margin-bottom: 20px;
+  }
+
+  .client-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    .client-avatars {
+      display: flex;
+      margin-right: 12px;
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin-left: -8px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .client-count {
+      font-size: 16px;
+      color: #111827;
+
+      strong {
+        color: #002D62;
+      }
+    }
+  }
+}
+
+// Clinic cards
+.clinic-card {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 0.8rem;
+  background-color: white;
+
+  .clinic-image {
+    height: 180px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .clinic-details {
+    padding: 16px 0;
+
+    .clinic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .clinic-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+        margin: 0;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        color: #111827;
+        font-weight: 500;
+
+        i {
+          color: #F59E0B;
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .clinic-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      .location, .speciality {
+        display: flex;
+        align-items: center;
+        color: #6B7280;
+        font-size: 14px;
+
+        i {
+          margin-right: 6px;
+          color: #002D62;
+        }
+      }
+    }
+
+    .clinic-actions {
+      display: flex;
+      gap: 10px;
+
+      .book-btn {
+        flex: 1;
+        background-color: #002D62;
+        border: none;
+        border-radius: 30px;
+        padding: 10px;
+        font-weight: 500;
+
+        &:hover {
+          background-color: darken(#002D62, 10%);
+        }
+      }
+
+      .favorite-btn {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #E5E7EB;
+        border-radius: 50%;
+        color: #6B7280;
+
+        &:hover {
+          background-color: #F3F4F6;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .clinic-card {
+    .clinic-info {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .discover-title {
+    font-size: 28px;
+  }
+
+  .row {
+    margin-bottom: 20px;
+  }
+}
