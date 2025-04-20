@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 interface Clinic {
@@ -12,6 +13,9 @@ interface Clinic {
 
 @Component({
   selector: 'app-home-clinics',
+  standalone: true,
+  imports: [CommonModule,   ],
+
   templateUrl: './home-clinics.component.html',
   styleUrls: ['./home-clinics.component.scss']
 })

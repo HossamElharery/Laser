@@ -1,1 +1,65 @@
-<p>footer works!</p>
+<footer class="footer py-5">
+  <div class="container">
+    <!-- Top section -->
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h1 class="cta-title">{{ 'footer.joinTitlePart1' | translate }}<br>{{ 'footer.joinTitlePart2' | translate }}</h1>
+        <a [routerLink]="['/', currentLanguage, 'clinic-profile', 'register']" class="btn btn-start">
+          {{ 'footer.letsStart' | translate }}
+          <i class="bi bi-arrow-right ms-2" [class.rtl-flip]="isRtl"></i>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div class="social-links">
+          <a href="#" class="social-link">{{ 'footer.instagram' | translate }}</a>
+          <a href="#" class="social-link">{{ 'footer.youtube' | translate }}</a>
+          <a href="#" class="social-link">{{ 'footer.facebook' | translate }}</a>
+          <a href="#" class="social-link">{{ 'footer.linkedin' | translate }}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo and nav section -->
+    <div class="row logo-nav-section">
+      <div class="col-md-3">
+        <div class="footer-logo">
+          <img src="assets/images/logo.svg" alt="Logo" class="logo">
+        </div>
+      </div>
+      <div class="col-md-9">
+        <nav class="footer-nav">
+          <a [routerLink]="['/', currentLanguage]" class="nav-link">{{ 'common.home' | translate }}</a>
+          <a [routerLink]="['/', currentLanguage, 'about']" class="nav-link">{{ 'common.about' | translate }}</a>
+          <a [routerLink]="['/', currentLanguage, 'clinics']" class="nav-link">{{ 'common.clinics' | translate }}</a>
+          <a [routerLink]="['/', currentLanguage, 'contact']" class="nav-link">{{ 'common.contact' | translate }}</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Contact info section -->
+    <div class="row contact-info mt-4">
+      <div class="col-md-4">
+        <p class="contact-text">3225 S 2nd Street, East Chaunceyfurt 85001</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <p class="contact-text">Alfred7cahoo.com</p>
+      </div>
+      <div class="col-md-4" [ngClass]="{'text-end': !isRtl, 'text-start': isRtl}">
+        <p class="contact-text">(245) 630-6726 x7929</p>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="footer-divider">
+
+    <!-- Copyright section -->
+    <div class="row copyright-section">
+      <div class="col-md-6">
+        <p class="copyright-text">{{ 'footer.copyright' | translate }}</p>
+      </div>
+      <div class="col-md-6" [ngClass]="{'text-end': !isRtl, 'text-start': isRtl}">
+        <a [routerLink]="['/', currentLanguage, 'terms']" class="terms-link">{{ 'footer.terms' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

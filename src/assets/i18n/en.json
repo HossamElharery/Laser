@@ -53,5 +53,18 @@
       "title": "Discover Top Clinics Near You",
       "description": "Browse trusted clinics offering advanced laser treatments. Compare services, read reviews, and choose the best care tailored to your needs."
     }
+  },
+  "footer": {
+    "joinTitlePart1": "Want to Join as",
+    "joinTitlePart2": "Clinic?",
+    "letsStart": "Let's Start",
+    "instagram": "Instagram",
+    "youtube": "Youtube",
+    "facebook": "Facebook",
+    "linkedin": "Linkedin",
+    "terms": "Terms & Conditions",
+    "copyright": "© 2024 Transparent. All rights reserved"
   }
+
+
 }

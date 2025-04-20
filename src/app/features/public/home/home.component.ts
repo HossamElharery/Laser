@@ -1,12 +1,12 @@
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher/language-switcher.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { ClinicsComponent } from "../clinics/clinics.component";
 import { HomeClinicsComponent } from "./components/home-clinics/home-clinics.component";
-import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+
 
 interface Feature {
   icon: string;
@@ -23,7 +23,7 @@ interface Service {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HeroComponent, HomeClinicsComponent , HowItWorksComponent],
+  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HomeClinicsComponent,   HowItWorksComponent,  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
