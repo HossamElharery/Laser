@@ -141,7 +141,7 @@
     .accordion-button {
       font-weight: 500;
       font-size: 1.1rem;
-
+      justify-content: space-between;
       &::after {
         margin-left: 15px;
       }

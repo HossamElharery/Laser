@@ -9,7 +9,9 @@
   --text-align-start: left;
   --text-align-end: right;
 }
-
+* {
+  font-family: "Inria Sans", sans-serif !important;
+ }
 [dir="rtl"] {
   --direction: rtl;
   --start: right;

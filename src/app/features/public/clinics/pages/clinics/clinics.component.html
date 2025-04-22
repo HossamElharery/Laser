@@ -1,0 +1,416 @@
+<div class="clinics-page">
+  <!-- Search Bar Section -->
+  <div class="search-bar-section mb-4">
+    <div class="row g-2">
+      <div class="col-md-3">
+        <div class="search-input">
+          <i class="bi bi-search"></i>
+          <input type="text" class="form-control"
+            placeholder="Search for Hospital">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="search-input">
+          <i class="bi bi-geo-alt"></i>
+          <input type="text" class="form-control"
+            placeholder="Hospital Location">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="search-input">
+          <i class="bi bi-grid"></i>
+          <select class="form-select">
+            <option selected>Laser Type</option>
+            <option>Type 1</option>
+            <option>Type 2</option>
+            <option>Type 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="search-input">
+          <i class="bi bi-gear"></i>
+          <select class="form-select">
+            <option selected>Machine Type</option>
+            <option>Type 1</option>
+            <option>Type 2</option>
+            <option>Type 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary sign-up-btn">
+          <i class="bi bi-search"></i>
+          Sign up
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Left Sidebar - Map and Filters -->
+    <div class="col-lg-3">
+      <!-- Location Map -->
+      <div class="sidebar-section location-section">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="section-title mb-0">Location</h5>
+          <a href="#" class="view-map-link">Show on Full Map</a>
+        </div>
+        <div class="map-container">
+          <img src="../../.././../../../assets/imgs/clinic/Rectangle 254.png"
+            alt="Location Map" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="sidebar-section filter-section mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="section-title mb-0">Filter</h5>
+          <a href="#" class="clear-link">Clear All Filters</a>
+        </div>
+
+        <!-- Filter Locations -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('locations')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-geo-alt me-2"></i>
+              <span>Filter Locations</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('locations') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body"
+            [ngClass]="{'show': isFilterOpen('locations')}">
+            <div class="filter-options">
+              <div class="filter-option-row">
+                <div class="filter-tag active">
+                  <span>Cairo Government</span>
+                  <span class="count">(25)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Elshik Zayd</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medical Center -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('medical')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-hospital me-2"></i>
+              <span>Medical center</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('medical') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body"
+            [ngClass]="{'show': isFilterOpen('medical')}">
+            <div class="filter-options">
+              <div class="filter-option-row">
+                <div class="filter-tag active">
+                  <span>Hospital</span>
+                  <span class="count">(20)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Hub</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Polyclinic</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Clinic</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Any</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Body Area -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('body')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person me-2"></i>
+              <span>Filter Body Area</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('body') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body" [ngClass]="{'show': isFilterOpen('body')}">
+            <div class="filter-options">
+              <div class="filter-option-row">
+                <div class="filter-tag active">
+                  <span>Upper Limbs</span>
+                  <span class="count">(15)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Lower Limbs</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Abdomen</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Back</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Select Area</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skin Type -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('skin')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-palette me-2"></i>
+              <span>Skin Type</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('skin') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body" [ngClass]="{'show': isFilterOpen('skin')}">
+            <div class="filter-options">
+              <div class="filter-option-row">
+                <div class="filter-tag active">
+                  <span>Skin Type</span>
+                  <span class="count">(20)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Skin Type</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Skin Type</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Skin Type</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Skin Type</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Therapist -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('therapist')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person me-2"></i>
+              <span>Therapist</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('therapist') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body"
+            [ngClass]="{'show': isFilterOpen('therapist')}">
+            <div class="filter-options">
+              <div class="filter-option-row">
+                <div class="filter-tag active">
+                  <span>Specialist Dr</span>
+                  <span class="count">(20)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Physician Gp</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+              <div class="filter-option-row">
+                <div class="filter-tag">
+                  <span>Laser Specialist</span>
+                  <span class="count">(10)</span>
+                </div>
+                <div class="filter-tag">
+                  <span>Nurse</span>
+                  <span class="count">(10)</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-2">
+              <button class="btn btn-link btn-sm show-more-btn">
+                Show More <i class="bi bi-chevron-down ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Filter -->
+        <div class="filter-group">
+          <div class="filter-header" (click)="toggleFilter('price')">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-currency-dollar me-2"></i>
+              <span>Price</span>
+            </div>
+            <i class="bi"
+              [ngClass]="isFilterOpen('price') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          </div>
+          <div class="filter-body" [ngClass]="{'show': isFilterOpen('price')}">
+            <div class="price-range">
+              <div class="range-values d-flex justify-content-between mb-2">
+                <span>LE {{priceRange[0]}}</span>
+                <span>LE {{priceRange[1]}}</span>
+              </div>
+              <div class="range-slider">
+                <input type="range" class="form-range" min="0" max="1000"
+                  [(ngModel)]="priceRange[0]">
+                <input type="range" class="form-range" min="0" max="1000"
+                  [(ngModel)]="priceRange[1]">
+                <div class="slider-track"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Content - Clinic Cards -->
+    <div class="col-lg-9">
+      <div class="clinic-grid">
+        <div class="row g-4">
+          <!-- Clinic Cards - First Row -->
+          <div class="col-md-4" *ngFor="let clinic of clinics">
+            <div class="clinic-card">
+              <div class="clinic-image">
+                <img [src]="clinic.image" alt="Clinic Interior"
+                  class="img-fluid">
+              </div>
+              <div class="clinic-details p-3">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="clinic-name">{{clinic.name}}</h5>
+                  <div class="rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-value">{{clinic.rating}}</span>
+                  </div>
+                </div>
+                <div class="clinic-info d-flex mb-3">
+                  <div class="clinic-type me-3">
+                    <i class="bi bi-building"></i>
+                    <span>{{clinic.type}}</span>
+                  </div>
+                  <div class="clinic-service">
+                    <i class="bi bi-grid"></i>
+                    <span>{{clinic.service}}</span>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <button class="btn btn-primary book-btn flex-grow-1 me-2">
+                    <a
+                      [routerLink]="['/', currentLanguage, 'clinics', clinic.id]"
+                      class="text-white text-decoration-none">Book
+                      Appointment</a>
+                  </button>
+                  <button class="btn btn-outline-secondary favorite-btn">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div
+        class="pagination-container mt-4 d-flex justify-content-between align-items-center">
+        <div class="showing-info">
+          Showing
+          <select class="form-select form-select-sm d-inline-block w-auto mx-1"
+            [(ngModel)]="pageSize">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+          <span>Total Results: {{totalResults}}</span>
+        </div>
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item active"><a class="page-link"
+                href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">...</a></li>
+            <li class="page-item"><a class="page-link" href="#">10</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

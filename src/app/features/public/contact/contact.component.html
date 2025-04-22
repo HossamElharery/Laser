@@ -1,1 +1,123 @@
-<div>Contact Component</div>
+<div class="contact-page">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <!-- Left side - Contact information with blue overlay -->
+      <div class="col-lg-5 contact-info">
+        <div class="overlay"></div>
+        <div class="content">
+          <h1>3225 S 2nd Street, East Chaunceyfurt 85001</h1>
+
+          <div class="contact-detail">
+            <p>Alfred7&#64;yahoo.com</p>
+          </div>
+
+          <div class="contact-detail">
+            <p>(245) 630-6726 x7929</p>
+          </div>
+
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side - Contact form -->
+      <div class="col-lg-7 contact-form-container">
+        <div class="form-wrapper">
+          <div class="form-header">
+            <h2>Get Intouch us !</h2>
+            <p>Have Questions or Ready to Collaborate? Let's Connect</p>
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    formControlName="firstName"
+                    class="form-control"
+                    placeholder="First Name"
+                    [ngClass]="{'is-invalid': fieldHasError('firstName')}"
+                  >
+                  <div *ngIf="fieldHasError('firstName')" class="invalid-feedback">
+                    {{ getErrorMessage('firstName') }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    formControlName="lastName"
+                    class="form-control"
+                    placeholder="Last Name"
+                    [ngClass]="{'is-invalid': fieldHasError('lastName')}"
+                  >
+                  <div *ngIf="fieldHasError('lastName')" class="invalid-feedback">
+                    {{ getErrorMessage('lastName') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="E-Mail"
+                [ngClass]="{'is-invalid': fieldHasError('email')}"
+              >
+              <div *ngIf="fieldHasError('email')" class="invalid-feedback">
+                {{ getErrorMessage('email') }}
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <input
+                type="tel"
+                formControlName="phoneNumber"
+                class="form-control"
+                placeholder="Phone Number"
+                [ngClass]="{'is-invalid': fieldHasError('phoneNumber')}"
+              >
+              <div *ngIf="fieldHasError('phoneNumber')" class="invalid-feedback">
+                {{ getErrorMessage('phoneNumber') }}
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <textarea
+                formControlName="message"
+                class="form-control"
+                placeholder="Leave Message"
+                rows="7"
+                [ngClass]="{'is-invalid': fieldHasError('message')}"
+              ></textarea>
+              <div *ngIf="fieldHasError('message')" class="invalid-feedback">
+                {{ getErrorMessage('message') }}
+              </div>
+            </div>
+
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

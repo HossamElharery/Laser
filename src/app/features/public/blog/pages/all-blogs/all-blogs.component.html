@@ -1,0 +1,103 @@
+<!-- Hero Banner Section with Slider -->
+<section class="blog-hero">
+  <div class="overlay"></div>
+  <div class="hero-slider">
+    <div class="hero-slide" *ngFor="let slide of sliderItems; let i = index"
+         [class.active]="i === currentSlide">
+      <!-- No dynamic style binding in the template for SSR compatibility -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="hero-content">
+              <h1>{{slide.title}}</h1>
+              <p>{{slide.content}}</p>
+              <div class="blog-meta">
+                <span><i class="bi bi-calendar"></i> {{slide.date}}</span>
+                <span><i class="bi bi-clock"></i> {{slide.readingTime}}</span>
+              </div>
+              <!-- Slider pagination dots -->
+              <div class="hero-pagination">
+                <button
+                  *ngFor="let dot of sliderItems; let i = index"
+                  [class.active]="i === currentSlide"
+                  (click)="goToSlide(i)"
+                  class="dot"
+                  aria-label="Go to slide ">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog List Section -->
+<section class="blog-list-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-header">
+          <h2>Our Blog</h2>
+          <p>Stay informed with the Latest in Laser Treatments and Medical Trends</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="sort-control text-md-end">
+          <label for="sortBy">Sort By:</label>
+          <select id="sortBy" class="form-select" (change)="changeSortOption($event)">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let post of blogPosts">
+        <div class="blog-card p-2">
+          <div class="blog-image">
+            <a  [routerLink]="['/', currentLanguage, 'blogs', post.id]">
+            <img [src]="post.image" alt="Blog Image" class="img-fluid">
+
+            </a>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span>{{post.date}}</span>
+              <span>{{post.readingTime}}</span>
+            </div>
+            <h3>     <a  [routerLink]="['/', currentLanguage, 'blogs', post.id]">
+              {{post.title}}
+            </a></h3>
+            <p>{{post.excerpt}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <nav aria-label="Blog pagination">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          <li class="page-item" *ngFor="let page of getPageArray()" [class.active]="page === currentPage">
+            <a class="page-link" (click)="changePage(page)">{{page}}</a>
+          </li>
+
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>

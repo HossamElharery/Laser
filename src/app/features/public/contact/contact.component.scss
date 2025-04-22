@@ -1,0 +1,234 @@
+@use '../../../../assets/scss/variables.scss' as *;
+
+.contact-page {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// Left side - Contact information
+.contact-info {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+  color: $white;
+  background-image: url('../../../../assets/imgs/about/contact.png');
+  background-size: cover;
+  background-position: center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,43,96,0.7) 0%, rgba(0,43,96,0.9) 100%);
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      margin-bottom: 1rem;
+
+      p {
+        font-size: 1.125rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: rgba($white, 0.2);
+        color: $white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: rgba($white, 0.3);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+// Right side - Contact form
+.contact-form-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.form-wrapper {
+  width: 100%;
+  // max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem;
+
+  .form-header {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2.25rem;
+      font-weight: $font-weight-bold;
+      color: $primary-blue;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: $text-gray;
+      margin-bottom: 0;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-control {
+    height: auto;
+    padding: 0.75rem 1rem;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    font-size: 1rem;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($primary-blue, 0.25);
+      border-color: $primary-blue;
+    }
+
+    &.is-invalid {
+      border-color: $danger-color;
+
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba($danger-color, 0.25);
+      }
+    }
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .invalid-feedback {
+    color: $danger-color;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  .btn-primary {
+    background-color: $primary-blue;
+    border-color: $primary-blue;
+    padding: 0.75rem 2.5rem;
+    font-weight: $font-weight-medium;
+    border-radius: 50px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: darken($primary-blue, 10%);
+      border-color: darken($primary-blue, 10%);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($primary-blue, 0.25);
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: $breakpoint-lg) {
+  .contact-info {
+    min-height: 400px;
+
+    .content {
+      h1 {
+        font-size: 1.25rem;
+      }
+
+      .contact-detail p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .contact-form-container {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+
+  .form-wrapper {
+    padding: 2rem 1.5rem;
+
+    .form-header {
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .contact-info {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .contact-info {
+    padding: 1.5rem;
+
+    .content {
+      h1 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-links {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  .form-wrapper {
+    padding: 1.5rem 1rem;
+
+    .form-header {
+      margin-bottom: 1.5rem;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

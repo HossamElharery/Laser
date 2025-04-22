@@ -9,14 +9,15 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
-  {
-    path: 'blog',
-    loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent)
-  },
-  {
-    path: 'clinics',
-    loadComponent: () => import('./clinics/clinics.component').then(m => m.ClinicsComponent)
-  },
+
+  { path: 'blogs', loadChildren: () => import('./blog/blogs.routes').then(c => c.default) },
+
+  // {
+  //   path: 'clinics',
+  //   loadComponent: () => import('./clinics/clinics.component').then(m => m.ClinicsComponent)
+  // },
+  { path: 'clinics', loadChildren: () => import('./clinics/clinics.routes').then(c => c.default) },
+
   {
     path: 'contact',
     loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)

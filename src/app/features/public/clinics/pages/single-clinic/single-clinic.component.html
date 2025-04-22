@@ -1,0 +1,438 @@
+<div class="single-clinic-page">
+  <!-- Clinic Header Section -->
+  <div class="clinic-header">
+    <div class="clinic-info d-flex align-items-center">
+      <div class="clinic-logo">
+        <img src="../../../../../../assets/imgs/clinic/Frame 1618873249.png" alt="Clinic Logo">
+      </div>
+      <div class="clinic-details">
+        <h1 class="clinic-title">Clinic Title Here</h1>
+        <p class="clinic-address">2336 Terry Roads</p>
+      </div>
+      <div class="clinic-rating ms-2">
+        <div class="rating-value">
+          <i class="bi bi-star-fill"></i>
+          <span>4.1</span>
+        </div>
+      </div>
+    </div>
+    <div class="clinic-actions">
+      <button class="btn btn-outline-primary review-btn">Write Review</button>
+      <button class="btn btn-primary appointment-btn">Book Appointment</button>
+      <button class="btn btn-icon favorite-btn">
+        <i class="bi bi-heart"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Clinic Gallery and Description -->
+  <div class="row clinic-content mt-4">
+    <div class="col-lg-6 bg-white p-2">
+      <!-- Main Image -->
+      <div class="main-image mb-3">
+        <img src="../../../../../../assets/imgs/clinic/Frame 1618873251.png" alt="Laser Treatment" class="img-fluid w-100">
+      </div>
+
+      <!-- Gallery Thumbnails -->
+      <div class="row thumbnails g-3">
+        <div class="col-6">
+          <div class="thumbnail">
+            <img src="../../../../../../assets/imgs/clinic/Frame 1618873252.png" alt="Laser Treatment" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="thumbnail">
+            <img src="../../../../../../assets/imgs/clinic/Frame 1618873253.png" alt="Laser Treatment" class="img-fluid w-100">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-lg-6 ">
+      <!-- Clinic Description -->
+      <div class="clinic-description bg-white p-2">
+        <div class="price-section mb-3">
+          <h2 class="price">5000 LE</h2>
+          <div class="offer-badge">25% Offer</div>
+        </div>
+
+        <h3 class="description-title mb-3">Lorem ipsum dolor sit amet consectetur.</h3>
+
+        <p class="description-text">
+          Lorem ipsum dolor sit amet consectetur. Purus turpis platea cursus non id pellentesque. Sed mauris eleifend pellentesque morbi. Nisl cursus tempus at nisl orci tempus et penatibus. Cras lobortis euismod tristique eget massa tellus eleifend. euismod tristique eget massa tellus eleifend.
+        </p>
+      </div>
+         <div class="thumbnail bg-white mt-2 p-2">
+          <img src="../../../../../../assets/imgs/clinic/Rectangle.png" alt="Clinic Location" class="img-fluid w-100">
+        </div>
+     </div>
+  </div>
+
+  <!-- Tabs Section -->
+  <div class="clinic-tabs mt-4">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'about'" (click)="setActiveTab('about')">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'services'" (click)="setActiveTab('services')">Other Services (4)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'reviews'" (click)="setActiveTab('reviews')">Reviews</a>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content mt-2">
+      <!-- About Tab -->
+      <div class="tab-pane fade" [class.show]="activeTab === 'about'" [class.active]="activeTab === 'about'">
+        <div class="about-clinic">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-info-circle me-2"></i>
+            <h4 class="mb-0">About Clinic</h4>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Purus turpis platea cursus non id pellentesque. Sed mauris eleifend pellentesque morbi. Nisl cursus tempus at nisl orci tempus et penatibus. Cras lobortis euismod tristique eget massa tellus eleifend. euismod tristique eget massa tellus eleifend.Lorem ipsum dolor sit amet consectetur. Purus turpis platea cursus non id pellentesque. Sed mauris eleifend pellentesque morbi. Nisl cursus tempus at nisl orci tempus et penatibus. Cras lobortis euismod tristique eget massa tellus eleifend. euismod tristique eget massa tellus eleifend.Lorem ipsum dolor sit amet consectetur. Purus turpis platea cursus non id pellentesque. Sed mauris eleifend pellentesque morbi. Nisl cursus tempus at nisl orci tempus et penatibus. Cras lobortis euismod tristique eget massa tellus eleifend. euismod tristique eget massa tellus eleifend.
+          </p>
+        </div>
+      </div>
+
+      <!-- Services Tab -->
+      <div class="tab-pane fade" [class.show]="activeTab === 'services'" [class.active]="activeTab === 'services'">
+        <div class="clinic-services">
+          <div class="row g-4">
+            <!-- Service Card 1 -->
+            <div class="col-md-6">
+              <div class="service-card">
+                <div class="d-flex">
+                  <div class="service-image">
+                    <img src="../../../../../../assets/imgs/clinic/Frame 1618873252.png" alt="Service">
+                    <span class="offer-badge">25% Offer</span>
+                  </div>
+                  <div class="service-info">
+                    <h5 class="service-title">Lorem ipsum dolor sit amet.</h5>
+                    <p class="service-description">Lorem ipsum dolor sit amet consectetur. Mi fames cras viverra pharetra tristique</p>
+                    <div class="service-meta">
+                      <div class="service-duration">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Duration: 30 Min</span>
+                      </div>
+                      <div class="service-location">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Cairo Government</span>
+                      </div>
+                    </div>
+                    <div class="service-price">
+                      <span>5000 LE</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-icon service-favorite-btn">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="col-md-6">
+              <div class="service-card">
+                <div class="d-flex">
+                  <div class="service-image">
+                    <img src="../../../../../../assets/imgs/clinic/Frame 1618873252.png" alt="Service">
+                    <span class="offer-badge">25% Offer</span>
+                  </div>
+                  <div class="service-info">
+                    <h5 class="service-title">Lorem ipsum dolor sit amet.</h5>
+                    <p class="service-description">Lorem ipsum dolor sit amet consectetur. Mi fames cras viverra pharetra tristique</p>
+                    <div class="service-meta">
+                      <div class="service-duration">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Duration: 30 Min</span>
+                      </div>
+                      <div class="service-location">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Cairo Government</span>
+                      </div>
+                    </div>
+                    <div class="service-price">
+                      <span>5000 LE</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-icon service-favorite-btn">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="col-md-6">
+              <div class="service-card">
+                <div class="d-flex">
+                  <div class="service-image">
+                    <img src="../../../../../../assets/imgs/clinic/Frame 1618873252.png" alt="Service">
+                    <span class="offer-badge">25% Offer</span>
+                  </div>
+                  <div class="service-info">
+                    <h5 class="service-title">Lorem ipsum dolor sit amet.</h5>
+                    <p class="service-description">Lorem ipsum dolor sit amet consectetur. Mi fames cras viverra pharetra tristique</p>
+                    <div class="service-meta">
+                      <div class="service-duration">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Duration: 30 Min</span>
+                      </div>
+                      <div class="service-location">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Cairo Government</span>
+                      </div>
+                    </div>
+                    <div class="service-price">
+                      <span>5000 LE</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-icon service-favorite-btn">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="col-md-6">
+              <div class="service-card">
+                <div class="d-flex">
+                  <div class="service-image">
+                    <img src="../../../../../../assets/imgs/clinic/Frame 1618873252.png" alt="Service">
+                    <span class="offer-badge">25% Offer</span>
+                  </div>
+                  <div class="service-info">
+                    <h5 class="service-title">Lorem ipsum dolor sit amet.</h5>
+                    <p class="service-description">Lorem ipsum dolor sit amet consectetur. Mi fames cras viverra pharetra tristique</p>
+                    <div class="service-meta">
+                      <div class="service-duration">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Duration: 30 Min</span>
+                      </div>
+                      <div class="service-location">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Cairo Government</span>
+                      </div>
+                    </div>
+                    <div class="service-price">
+                      <span>5000 LE</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-icon service-favorite-btn">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Tab -->
+      <div class="tab-pane fade" [class.show]="activeTab === 'reviews'" [class.active]="activeTab === 'reviews'">
+        <div class="clinic-reviews">
+          <!-- Client Feedback Summary -->
+          <div class="feedback-summary">
+            <h4>Client Feedback</h4>
+
+            <div class="row mt-4">
+              <div class="col-md-3">
+                <div class="overall-rating text-center">
+                  <h2 class="rating-number">4.8</h2>
+                  <div class="rating-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <p class="rating-label">Clinic Rating</p>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="rating-bars">
+                  <!-- 5 stars -->
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <div class="stars">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="progress mx-3 flex-grow-1">
+                      <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                    </div>
+                    <div class="percentage">70%</div>
+                  </div>
+
+                  <!-- 4 stars -->
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <div class="stars">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <div class="progress mx-3 flex-grow-1">
+                      <div class="progress-bar" role="progressbar" style="width: 15%"></div>
+                    </div>
+                    <div class="percentage">15%</div>
+                  </div>
+
+                  <!-- 3 stars -->
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <div class="stars">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <div class="progress mx-3 flex-grow-1">
+                      <div class="progress-bar" role="progressbar" style="width: 10%"></div>
+                    </div>
+                    <div class="percentage">10%</div>
+                  </div>
+
+                  <!-- 2 stars -->
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <div class="stars">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <div class="progress mx-3 flex-grow-1">
+                      <div class="progress-bar" role="progressbar" style="width: 3%"></div>
+                    </div>
+                    <div class="percentage">3%</div>
+                  </div>
+
+                  <!-- 1 star -->
+                  <div class="rating-bar-item d-flex align-items-center">
+                    <div class="stars">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <div class="progress mx-3 flex-grow-1">
+                      <div class="progress-bar" role="progressbar" style="width: 2%"></div>
+                    </div>
+                    <div class="percentage">2%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual Reviews -->
+          <div class="individual-reviews mt-5">
+            <h4 class="mb-4">Feedback</h4>
+
+            <!-- Review Item 1 -->
+            <div class="review-item mb-4">
+              <div class="d-flex">
+                <div class="reviewer-avatar">
+                  <div class="avatar-circle">MA</div>
+                </div>
+                <div class="review-content ms-3">
+                  <div class="reviewer-info">
+                    <h5 class="reviewer-name">Mohamed Ahmed</h5>
+                    <span class="review-date">3 Days ago</span>
+                  </div>
+                  <div class="review-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <h6 class="review-title">Great Service</h6>
+                  <p class="review-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                  <div class="review-actions">
+                    <button class="btn btn-sm btn-link">
+                      <i class="bi bi-hand-thumbs-up"></i> Like
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Item 2 -->
+            <div class="review-item mb-4">
+              <div class="d-flex">
+                <div class="reviewer-avatar">
+                  <div class="avatar-circle">MA</div>
+                </div>
+                <div class="review-content ms-3">
+                  <div class="reviewer-info">
+                    <h5 class="reviewer-name">Mohamed Ahmed</h5>
+                    <span class="review-date">3 Days ago</span>
+                  </div>
+                  <div class="review-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <h6 class="review-title">Great Service</h6>
+                  <p class="review-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                  <div class="review-actions">
+                    <button class="btn btn-sm btn-link">
+                      <i class="bi bi-hand-thumbs-up"></i> Like
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Item 3 -->
+            <div class="review-item mb-4">
+              <div class="d-flex">
+                <div class="reviewer-avatar">
+                  <div class="avatar-circle">MA</div>
+                </div>
+                <div class="review-content ms-3">
+                  <div class="reviewer-info">
+                    <h5 class="reviewer-name">Mohamed Ahmed</h5>
+                    <span class="review-date">3 Days ago</span>
+                  </div>
+                  <div class="review-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <h6 class="review-title">Great Service</h6>
+                  <p class="review-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                  <div class="review-actions">
+                    <button class="btn btn-sm btn-link">
+                      <i class="bi bi-hand-thumbs-up"></i> Like
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View All Reviews Button -->
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-primary">View All Reviews</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
