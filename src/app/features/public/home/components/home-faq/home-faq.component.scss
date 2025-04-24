@@ -1,0 +1,312 @@
+
+.faq-section {
+  padding: 60px 0;
+
+  .faq-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+  }
+
+  .faq-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .accordion {
+    .accordion-item {
+      border: none;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .accordion-header {
+        .accordion-button {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          background-color: transparent;
+          box-shadow: none;
+          padding: 24px 16px 24px 0;
+          position: relative;
+
+          &:not(.collapsed) {
+            color: #333;
+            background-color: transparent;
+            box-shadow: none;
+
+            &::after {
+              display: none;
+            }
+
+            .accordion-icon {
+              background-color: #0056b3;
+
+              i {
+                color: #fff;
+                transform: rotate(180deg);
+                transition: transform 0.3s ease;
+              }
+            }
+          }
+
+          &::after {
+            display: none;
+          }
+
+          .accordion-icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+
+            i {
+              font-size: 14px;
+              color: #0056b3;
+              transition: transform 0.3s ease, color 0.3s ease;
+            }
+          }
+
+          &.collapsed {
+            .accordion-icon {
+              background-color: #fff;
+
+              i {
+                color: #0056b3;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+
+      .accordion-collapse {
+        .accordion-body {
+          padding: 0 50px 24px 0;
+          color: #666;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+/* Media Queries */
+@media (max-width: 991.98px) {
+  .faq-section {
+    .faq-title {
+      font-size: 32px;
+    }
+
+    .accordion {
+      .accordion-item {
+        .accordion-header {
+          .accordion-button {
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .faq-section {
+    .faq-title {
+      font-size: 28px;
+    }
+
+    .faq-subtitle {
+      font-size: 16px;
+    }
+
+    .accordion {
+      .accordion-item {
+        .accordion-header {
+          .accordion-button {
+            font-size: 16px;
+            padding: 16px 16px 16px 0;
+          }
+        }
+
+        .accordion-collapse {
+          .accordion-body {
+            padding: 0 40px 16px 0;
+          }
+        }
+      }
+    }
+  }
+}/* faq.component.scss */
+
+
+.faq-section {
+  padding: 60px 0;
+
+  .faq-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+  }
+
+  .faq-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .accordion {
+    .accordion-item {
+      border: none;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 0;
+      padding: 0.8rem 1.5rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .accordion-header {
+                  .accordion-button {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          background-color: transparent;
+          box-shadow: none;
+          padding: 24px 16px 24px 0;
+          position: relative;
+
+          &:not(.collapsed) {
+            color: #333;
+            background-color: transparent;
+            box-shadow: none;
+
+            &::after {
+              display: none;
+            }
+
+            .accordion-icon {
+              background-color: #0056b3;
+
+              i {
+                color: #fff;
+                transform: rotate(180deg);
+                transition: transform 0.3s ease;
+              }
+            }
+          }
+
+          &::after {
+            display: none;
+          }
+
+          .accordion-icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            i {
+              font-size: 14px;
+              color: #0056b3;
+            }
+          }
+
+          &.collapsed {
+            .accordion-icon {
+              background-color: #fff;
+
+              i {
+                color: #0056b3;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+
+      .accordion-collapse {
+        .accordion-body {
+          padding: 0 32px 24px 0;
+          color: #666;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+/* Media Queries */
+@media (max-width: 991.98px) {
+  .faq-section {
+    .faq-title {
+      font-size: 32px;
+    }
+
+    .accordion {
+      .accordion-item {
+        .accordion-header {
+          .accordion-button {
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .faq-section {
+    .faq-title {
+      font-size: 28px;
+    }
+
+    .faq-subtitle {
+      font-size: 16px;
+    }
+
+    .accordion {
+      .accordion-item {
+        .accordion-header {
+          .accordion-button {
+            font-size: 16px;
+            padding: 16px 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,12 +5,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService, Language } from '../../core/services/language.service';
 import { Subject, takeUntil } from 'rxjs';
 import { FooterComponent } from "../../shared/components/footer/footer.component";
+import { NavBarComponent } from "../../shared/components/nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TranslateModule, FooterComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TranslateModule, FooterComponent, NavBarComponent],
   standalone: true
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {

@@ -8,6 +8,7 @@ import { LanguageSwitcherComponent } from '../../../shared/components/language-s
 import { HeroComponent } from './components/hero/hero.component';
 import { HomeClinicsComponent } from "./components/home-clinics/home-clinics.component";
 import { TetstimonialComponent } from "./components/tetstimonial/tetstimonial.component";
+import { HomeFaqComponent } from "./components/home-faq/home-faq.component";
 
 
 interface Feature {
@@ -26,7 +27,7 @@ interface Service {
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HomeClinicsComponent,
-    HowItWorksComponent, FeaturedClinicComponent, TetstimonialComponent],
+    HowItWorksComponent, FeaturedClinicComponent, TetstimonialComponent, HomeFaqComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

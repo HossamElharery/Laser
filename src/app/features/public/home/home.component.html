@@ -77,45 +77,7 @@
 <app-how-it-works></app-how-it-works>
 <app-featured-clinic></app-featured-clinic>
 <app-tetstimonial></app-tetstimonial>
+<app-home-faq></app-home-faq>
 
-
-  <!-- Services Preview -->
-  <section class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>{{ 'HOME.SERVICES.TITLE' | translate }}</h2>
-        <p>{{ 'HOME.SERVICES.SUBTITLE' | translate }}</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card" *ngFor="let service of services">
-          <div class="service-image">
-            <!-- Placeholder for service image from Figma -->
-            <div class="image-placeholder">
-              <div class="placeholder-content">
-                <i [class]="service.icon"></i>
-              </div>
-            </div>
-          </div>
-          <div class="service-content">
-            <h3>{{ service.title }}</h3>
-            <p>{{ service.description }}</p>
-            <a [routerLink]="'/services'" class="service-link">{{ 'HOME.SERVICES.LEARN_MORE' | translate }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <h2>{{ 'HOME.CTA.TITLE' | translate }}</h2>
-        <p>{{ 'HOME.CTA.SUBTITLE' | translate }}</p>
-        <a [routerLink]="'/contact'" class="btn btn-light">{{ 'HOME.CTA.BTN' | translate }}</a>
-      </div>
-    </div>
-  </section>
 </div>
 <app-language-switcher></app-language-switcher>
