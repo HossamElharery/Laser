@@ -1,0 +1,144 @@
+
+
+.customer-testimonials {
+  padding: 60px 0;
+
+  .testimonials-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+  }
+
+  .testimonials-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+  }
+
+  .testimonial-carousel {
+    position: relative;
+    padding: 0 10px;
+  }
+
+  .testimonial-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    .user-info {
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .user-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .user-title {
+        font-size: 14px;
+        color: #666;
+      }
+    }
+
+    .testimonial-text {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    i {
+      font-size: 16px;
+      color: #0056b3;
+    }
+
+    &.prev {
+      left: -20px;
+    }
+
+    &.next {
+      right: -20px;
+      background-color: #0056b3;
+      border-color: #0056b3;
+
+      i {
+        color: #fff;
+      }
+
+      &:hover {
+        background-color: #004494;
+      }
+    }
+  }
+}
+
+/* Media Queries */
+@media (max-width: 991.98px) {
+  .customer-testimonials {
+    .testimonials-title {
+      font-size: 32px;
+    }
+
+    .testimonial-card {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .customer-testimonials {
+    .testimonials-title {
+      font-size: 28px;
+    }
+
+    .testimonials-subtitle {
+      font-size: 16px;
+    }
+
+    .testimonial-card {
+      margin-bottom: 20px;
+    }
+
+    .carousel-control {
+      &.prev {
+        left: -10px;
+      }
+
+      &.next {
+        right: -10px;
+      }
+    }
+  }
+}

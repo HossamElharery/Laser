@@ -1,3 +1,4 @@
+import { FeaturedClinicComponent } from './components/featured-clinic/featured-clinic.component';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -6,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher/language-switcher.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { HomeClinicsComponent } from "./components/home-clinics/home-clinics.component";
+import { TetstimonialComponent } from "./components/tetstimonial/tetstimonial.component";
 
 
 interface Feature {
@@ -23,7 +25,8 @@ interface Service {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HomeClinicsComponent,   HowItWorksComponent,  ],
+  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HomeClinicsComponent,
+    HowItWorksComponent, FeaturedClinicComponent, TetstimonialComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
