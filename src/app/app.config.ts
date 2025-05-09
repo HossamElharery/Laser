@@ -4,6 +4,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { CustomTranslateLoader } from './core/services/translate-loader.service';
@@ -13,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withViewTransitions()),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
+    provideAnimations(),
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',

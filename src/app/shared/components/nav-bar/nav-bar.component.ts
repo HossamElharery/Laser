@@ -1,5 +1,5 @@
-import { Component, inject, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit, AfterViewInit, ElementRef, Renderer2, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LanguageService } from '../../../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,51 +14,63 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   private languageService = inject(LanguageService);
   private renderer = inject(Renderer2);
   private el = inject(ElementRef);
+  private platformId = inject(PLATFORM_ID);
 
   currentLanguage = this.languageService.currentLanguage;
   isMenuOpen = false;
   private navbarCollapseEl: HTMLElement | null = null;
+  private isBrowser = isPlatformBrowser(this.platformId);
 
   ngOnInit(): void {
-    // Any initialization code
+    // Initialize code, platform-agnostic
   }
 
   ngAfterViewInit(): void {
-    this.navbarCollapseEl = this.el.nativeElement.querySelector('.navbar-collapse');
+    // Only execute browser-specific code when in browser environment
+    if (this.isBrowser) {
+      this.navbarCollapseEl = this.el.nativeElement.querySelector('.navbar-collapse');
 
-    // Set initial height to 0 for mobile
-    if (window.innerWidth < 992) {
-      this.updateNavbarHeight();
-    }
-
-    // Listen for window resize events to handle transition between mobile and desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 992) {
-        // Reset styles for desktop
-        if (this.navbarCollapseEl) {
-          this.renderer.removeStyle(this.navbarCollapseEl, 'height');
-        }
-      } else {
-        // Apply proper height for mobile
+      // Set initial height to 0 for mobile
+      if (window.innerWidth < 992) {
         this.updateNavbarHeight();
       }
-    });
+
+      // Listen for window resize events to handle transition between mobile and desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
+          // Reset styles for desktop
+          if (this.navbarCollapseEl) {
+            this.renderer.removeStyle(this.navbarCollapseEl, 'height');
+          }
+        } else {
+          // Apply proper height for mobile
+          this.updateNavbarHeight();
+        }
+      });
+    }
   }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    this.updateNavbarHeight();
-  }
 
-  closeMenuOnMobile(): void {
-    if (window.innerWidth < 992 && this.isMenuOpen) {
-      this.isMenuOpen = false;
+    // Only run in browser environment
+    if (this.isBrowser) {
       this.updateNavbarHeight();
     }
   }
 
+  closeMenuOnMobile(): void {
+    // Only run in browser environment
+    if (this.isBrowser) {
+      if (window.innerWidth < 992 && this.isMenuOpen) {
+        this.isMenuOpen = false;
+        this.updateNavbarHeight();
+      }
+    }
+  }
+
   private updateNavbarHeight(): void {
-    if (!this.navbarCollapseEl) return;
+    if (!this.isBrowser || !this.navbarCollapseEl) return;
 
     if (this.isMenuOpen) {
       // First set height to 0 without transition to reset
