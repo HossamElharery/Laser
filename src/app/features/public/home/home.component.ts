@@ -9,7 +9,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { HomeClinicsComponent } from "./components/home-clinics/home-clinics.component";
 import { TetstimonialComponent } from "./components/tetstimonial/tetstimonial.component";
 import { HomeFaqComponent } from "./components/home-faq/home-faq.component";
-
+import { AnimateOnScrollDirective } from '../../../shared/directives/animate-on-scroll.directive';
 
 interface Feature {
   icon: string;
@@ -26,8 +26,18 @@ interface Service {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, LanguageSwitcherComponent, RouterModule, HomeClinicsComponent,
-    HowItWorksComponent, FeaturedClinicComponent, TetstimonialComponent, HomeFaqComponent],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    LanguageSwitcherComponent,
+    RouterModule,
+    HomeClinicsComponent,
+    HowItWorksComponent,
+    FeaturedClinicComponent,
+    TetstimonialComponent,
+    HomeFaqComponent,
+    AnimateOnScrollDirective
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -83,11 +93,9 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
-    // Remove logging to prevent console spam
-    // translateService is already configured by the LanguageService
+    // Component initialization
   }
 }

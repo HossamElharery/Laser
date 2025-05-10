@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { AnimateOnScrollDirective } from '../../../../../shared/directives/animate-on-scroll.directive';
 
 interface Clinic {
   id: number;
@@ -14,8 +15,7 @@ interface Clinic {
 @Component({
   selector: 'app-home-clinics',
   standalone: true,
-  imports: [CommonModule,   ],
-
+  imports: [CommonModule, AnimateOnScrollDirective],
   templateUrl: './home-clinics.component.html',
   styleUrls: ['./home-clinics.component.scss']
 })

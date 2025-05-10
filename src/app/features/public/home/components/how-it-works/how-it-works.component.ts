@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AnimateOnScrollDirective } from '../../../../../shared/directives/animate-on-scroll.directive';
 
 interface Offer {
   id: number;
@@ -14,10 +16,12 @@ interface Offer {
 
 @Component({
   selector: 'app-how-it-works',
+  standalone: true,
+  imports: [CommonModule, AnimateOnScrollDirective],
   templateUrl: './how-it-works.component.html',
   styleUrls: ['./how-it-works.component.scss']
 })
-export class HowItWorksComponent implements OnInit {
+export class HowItWorksComponent {
 
   offers: Offer[] = [
     {
@@ -67,9 +71,6 @@ export class HowItWorksComponent implements OnInit {
   ];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   toggleFavorite(offer: Offer): void {
     offer.isFavorite = !offer.isFavorite;

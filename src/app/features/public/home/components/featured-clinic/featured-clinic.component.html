@@ -1,15 +1,15 @@
 <!-- featured-clinics.component.html -->
 <section class="featured-clinics">
   <div class="container">
-    <h1 class="text-center mb-3">Featured Clinics Just for You</h1>
-    <p class="text-center mb-5">Explore top-rated clinics offering exceptional laser treatments near you.</p>
+    <h1 class="text-center mb-3" animateOnScroll animationName="fadeIn">Featured Clinics Just for You</h1>
+    <p class="text-center mb-5" animateOnScroll animationName="fadeIn" [delay]="200">Explore top-rated clinics offering exceptional laser treatments near you.</p>
 
     <div class="row mb-4">
       <!-- Clinic Card 1 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="slideInLeft" [delay]="300">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Clinic Name Here" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Clinic Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -30,8 +30,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -41,9 +41,9 @@
 
       <!-- Clinic Card 2 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="fadeIn" [delay]="400">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Beauty Care Clinic" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Beauty Care Clinic Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -64,8 +64,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -75,9 +75,9 @@
 
       <!-- Clinic Card 3 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="fadeIn" [delay]="500">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Clinic-Image-1.png" alt="Dermatology Center" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Clinic-Image-1.png" alt="Dermatology Center Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -98,8 +98,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -109,9 +109,9 @@
 
       <!-- Clinic Card 4 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="slideInRight" [delay]="600">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Clinic-Image-2.png" alt="Wellness Spa" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Clinic-Image-2.png" alt="Wellness Spa Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -132,8 +132,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -143,12 +143,12 @@
     </div>
 
     <div class="row mb-4">
-      <!-- Duplicate of first row for the second row in the design -->
+      <!-- Second row of clinics with alternating animations -->
       <!-- Clinic Card 5 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="slideInLeft" [delay]="700">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Clinic-Image-3.png" alt="Clinic Name Here" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Clinic-Image-3.png" alt="Clinic Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -169,8 +169,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -180,9 +180,9 @@
 
       <!-- Clinic Card 6 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="fadeIn" [delay]="800">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Beauty Care Clinic" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Beauty Care Clinic Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -203,8 +203,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -214,9 +214,9 @@
 
       <!-- Clinic Card 7 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="fadeIn" [delay]="900">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Dermatology Center" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Featured_Clinic_Image.png" alt="Dermatology Center Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -237,8 +237,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -248,9 +248,9 @@
 
       <!-- Clinic Card 8 -->
       <div class="col-12 col-md-6 col-lg-3 mb-4">
-        <div class="clinic-card">
+        <div class="clinic-card" animateOnScroll animationName="slideInRight" [delay]="1000">
           <div class="clinic-image">
-            <img src="../../../../../../assets/imgs/Clinic-Image-1.png" alt="Wellness Spa" class="img-fluid">
+            <img src="../../../../../../assets/imgs/Clinic-Image-1.png" alt="Wellness Spa Interior" class="img-fluid">
           </div>
           <div class="clinic-info">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -271,8 +271,8 @@
               </div>
             </div>
             <div class="action-buttons">
-              <button class="btn btn-primary book-btn">Book Appointment</button>
-              <button class="btn btn-outline-secondary favorite-btn">
+              <button class="btn btn-primary book-btn" type="button">Book Appointment</button>
+              <button class="btn btn-outline-secondary favorite-btn" type="button" aria-label="Add to favorites">
                <i class="bi bi-heart"></i>
               </button>
             </div>
@@ -282,7 +282,7 @@
     </div>
 
     <div class="text-center">
-      <button class="btn btn-outline-primary view-all-btn">View All Clinics</button>
+      <button class="btn btn-outline-primary view-all-btn" type="button" animateOnScroll animationName="fadeIn" [delay]="1100">View All Clinics</button>
     </div>
   </div>
 </section>

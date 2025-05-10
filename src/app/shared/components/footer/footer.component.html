@@ -11,10 +11,10 @@
       </div>
       <div class="col-md-6">
         <div class="social-links">
-          <a href="#" class="social-link">{{ 'footer.instagram' | translate }}</a>
-          <a href="#" class="social-link">{{ 'footer.youtube' | translate }}</a>
-          <a href="#" class="social-link">{{ 'footer.facebook' | translate }}</a>
-          <a href="#" class="social-link">{{ 'footer.linkedin' | translate }}</a>
+          <a href="#" class="social-link" aria-label="Instagram">{{ 'footer.instagram' | translate }}</a>
+          <a href="#" class="social-link" aria-label="YouTube">{{ 'footer.youtube' | translate }}</a>
+          <a href="#" class="social-link" aria-label="Facebook">{{ 'footer.facebook' | translate }}</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">{{ 'footer.linkedin' | translate }}</a>
         </div>
       </div>
     </div>
@@ -23,11 +23,11 @@
     <div class="row logo-nav-section">
       <div class="col-md-3">
         <div class="footer-logo">
-          <img src="assets/images/logo.svg" alt="Logo" class="logo">
+          <img src="assets/images/logo.svg" alt="Laser Care Logo" class="logo">
         </div>
       </div>
       <div class="col-md-9">
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="Footer navigation">
           <a [routerLink]="['/', currentLanguage]" class="nav-link">{{ 'common.home' | translate }}</a>
           <a [routerLink]="['/', currentLanguage, 'about']" class="nav-link">{{ 'common.about' | translate }}</a>
           <a [routerLink]="['/', currentLanguage, 'clinics']" class="nav-link">{{ 'common.clinics' | translate }}</a>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <title>Laser</title>
@@ -7,9 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
+  <!-- Early load script to handle animations, simple and small -->
+  <script>
+    // Mark as having JS (for CSS fallbacks)
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+
+    // Polyfill for IntersectionObserver in older browsers
+    if (!('IntersectionObserver' in window)) {
+      // Simple fallback - just show elements without animation
+      document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.querySelectorAll('.invisible');
+        Array.prototype.forEach.call(elements, function(el) {
+          el.classList.remove('invisible');
+        });
+      });
+    }
+  </script>
+
+  <!-- Animation initialization script - loaded after DOM -->
+  <script src="assets/js/scroll-animation-init.js" defer></script>
 </head>
 <body>
   <app-root></app-root>

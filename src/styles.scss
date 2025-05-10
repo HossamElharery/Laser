@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 
+// Import animations
+@import "./assets/scss/animations.scss";
+
 // Global styles to enhance RTL/LTR handling with Bootstrap
 :root {
   --direction: ltr;
@@ -102,9 +105,6 @@ html, body {
   border-top-right-radius: var(--bs-border-radius);
   border-bottom-right-radius: var(--bs-border-radius);
 }
-
-
-
 
 @media (min-width: 1400px) {
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {

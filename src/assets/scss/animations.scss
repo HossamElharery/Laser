@@ -1,0 +1,143 @@
+/* Base state */
+.invisible {
+  opacity: 0;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slideInLeft {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.slideInBottom {
+  animation: slideInBottom 0.8s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* For server-side rendering - fallback animations */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-animate {
+    --animate-duration: 0.8s;
+    --animate-delay: 0s;
+
+    /* When JS is disabled or in SSR, this provides graceful degradation */
+    &.scroll-fade-in {
+      opacity: 0;
+      animation: fadeIn var(--animate-duration) ease-out forwards;
+      animation-delay: var(--animate-delay);
+      animation-play-state: paused;
+
+      &.scroll-animated {
+        animation-play-state: running;
+      }
+    }
+
+    &.scroll-slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideInLeft var(--animate-duration) ease-out forwards;
+      animation-delay: var(--animate-delay);
+      animation-play-state: paused;
+
+      &.scroll-animated {
+        animation-play-state: running;
+      }
+    }
+
+    &.scroll-slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideInRight var(--animate-duration) ease-out forwards;
+      animation-delay: var(--animate-delay);
+      animation-play-state: paused;
+
+      &.scroll-animated {
+        animation-play-state: running;
+      }
+    }
+
+    &.scroll-slide-bottom {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInBottom var(--animate-duration) ease-out forwards;
+      animation-delay: var(--animate-delay);
+      animation-play-state: paused;
+
+      &.scroll-animated {
+        animation-play-state: running;
+      }
+    }
+  }
+}
+
+/* SSR Fallback - ensure content is visible with no JS */
+.no-js .invisible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* For users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn, .slideInLeft, .slideInRight, .slideInBottom,
+  .scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-slide-bottom {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .invisible {
+    opacity: 1 !important;
+  }
+}

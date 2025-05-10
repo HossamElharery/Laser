@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row mb-3">
       <div class="col-12">
-        <h1 class="testimonials-title">What Our Customers Say</h1>
-        <p class="testimonials-subtitle">
+        <h1 class="testimonials-title" animateOnScroll animationName="fadeIn">What Our Customers Say</h1>
+        <p class="testimonials-subtitle" animateOnScroll animationName="fadeIn" [delay]="200">
           Real stories from people who've experienced expert care and outstanding results.
         </p>
       </div>
@@ -16,7 +16,7 @@
           <div class="row">
             <!-- Testimonial 1 -->
             <div class="col-12 col-md-4">
-              <div class="testimonial-card">
+              <div class="testimonial-card" animateOnScroll animationName="slideInLeft" [delay]="300">
                 <div class="user-info d-flex align-items-center mb-3">
                   <img src="../../../../../../assets/imgs/Ellipse_3.png" alt="User Avatar" class="user-avatar">
                   <div class="ms-3">
@@ -32,7 +32,7 @@
 
             <!-- Testimonial 2 -->
             <div class="col-12 col-md-4">
-              <div class="testimonial-card">
+              <div class="testimonial-card" animateOnScroll animationName="fadeIn" [delay]="500">
                 <div class="user-info d-flex align-items-center mb-3">
                   <img src="../../../../../../assets/imgs/Ellipse_3.png" alt="User Avatar" class="user-avatar">
                   <div class="ms-3">
@@ -48,7 +48,7 @@
 
             <!-- Testimonial 3 -->
             <div class="col-12 col-md-4">
-              <div class="testimonial-card">
+              <div class="testimonial-card" animateOnScroll animationName="slideInRight" [delay]="700">
                 <div class="user-info d-flex align-items-center mb-3">
                   <img src="../../../../../../assets/imgs/Ellipse_3.png" alt="User Avatar" class="user-avatar">
                   <div class="ms-3">
@@ -65,10 +65,10 @@
         </div>
 
         <!-- Navigation Controls -->
-        <button class="carousel-control prev" type="button">
+        <button class="carousel-control prev" type="button" aria-label="Previous testimonial" (click)="previousSlide()">
           <i class="bi bi-chevron-left"></i>
         </button>
-        <button class="carousel-control next" type="button">
+        <button class="carousel-control next" type="button" aria-label="Next testimonial" (click)="nextSlide()">
           <i class="bi bi-chevron-right"></i>
         </button>
       </div>

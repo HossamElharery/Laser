@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, OnDestroy, Renderer2, PLATFORM_ID } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, Renderer2, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LanguageService } from './core/services/language.service';
 import { BootstrapService } from './core/services/bootstrap.service';
+import { AnimationInitializerService } from './shared/services/animation-initializer.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -12,9 +13,10 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private languageService = inject(LanguageService);
   private bootstrapService = inject(BootstrapService);
+  private animationInitializer = inject(AnimationInitializerService);
   private renderer = inject(Renderer2);
   private destroy$ = new Subject<void>();
   private platformId = inject(PLATFORM_ID);
@@ -41,6 +43,16 @@ export class AppComponent implements OnInit, OnDestroy {
           this.renderer.setAttribute(document.documentElement, 'lang', lang);
         }
       });
+  }
+
+  ngAfterViewInit() {
+    // Initialize animations once the view is ready
+    if (isPlatformBrowser(this.platformId)) {
+      // Short timeout to make sure all components are fully rendered
+      setTimeout(() => {
+        this.animationInitializer.initializeAnimations();
+      }, 0);
+    }
   }
 
   ngOnDestroy() {

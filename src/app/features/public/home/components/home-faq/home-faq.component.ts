@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AnimateOnScrollDirective } from '../../../../../shared/directives/animate-on-scroll.directive';
 
 interface FaqItem {
   id: number;
@@ -9,7 +11,8 @@ interface FaqItem {
 
 @Component({
   selector: 'app-home-faq',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, AnimateOnScrollDirective],
   templateUrl: './home-faq.component.html',
   styleUrl: './home-faq.component.scss'
 })
@@ -59,7 +62,7 @@ export class HomeFaqComponent {
     // Any initialization logic
   }
 
-  // Optional: If you want to handle toggling programmatically instead of relying on Bootstrap's built-in behavior
+  // Toggle FAQ item open/closed state
   toggleFaq(index: number): void {
     // Close all other items
     this.faqItems.forEach((item, i) => {

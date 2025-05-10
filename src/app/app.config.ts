@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withViewTransitions()),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
-    provideAnimations(),
+    provideAnimations(), // This is essential for animations to work
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',
