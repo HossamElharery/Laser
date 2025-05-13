@@ -1,38 +1,41 @@
-<div class="auth-wrapper d-flex flex-row">
+<div class="auth-wrapper">
   <!-- Left: Form Section -->
-  <div class="auth-form flex-grow-1 d-flex flex-column justify-content-between p-5">
+  <div class="auth-form">
     <div>
       <button class="menu-btn btn btn-light mb-4"><i class="bi bi-sliders"></i> Menu</button>
       <h1 class="title mb-2">Choose Account Type</h1>
       <p class="subtitle mb-4">Select the Account Type That Best Fits Your Goals and Start Your Journey With Us</p>
+
       <div class="account-type-list mb-4">
-        <div class="account-type-card selected mb-3 d-flex align-items-center p-3" tabindex="0">
-          <div class="icon me-3"><i class="bi bi-plus-circle fs-3"></i></div>
+        <div *ngFor="let type of accountTypes"
+             [class.selected]="type.selected"
+             class="account-type-card mb-3 d-flex align-items-center p-3"
+             tabindex="0"
+             (click)="selectAccountType(type.id)"
+             (keydown.enter)="selectAccountType(type.id)">
+          <div class="icon me-3"><i class="bi {{type.icon}} fs-3"></i></div>
           <div>
-            <div class="fw-bold">Clinic</div>
-            <div class="desc">Showcase your services, manage bookings, and grow your practice.</div>
-          </div>
-        </div>
-        <div class="account-type-card mb-3 d-flex align-items-center p-3" tabindex="0">
-          <div class="icon me-3"><i class="bi bi-person fs-3"></i></div>
-          <div>
-            <div class="fw-bold">Customer</div>
-            <div class="desc">Showcase your services, manage bookings, and grow your practice.</div>
+            <div class="fw-bold">{{type.title}}</div>
+            <div class="desc">{{type.description}}</div>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary btn-lg w-100 fw-bold continue-btn">Continue</button>
+
+      <button class="btn btn-primary btn-lg w-100 fw-bold continue-btn" (click)="continue()">Continue</button>
     </div>
   </div>
+
   <!-- Right: Image Section -->
-  <div class="auth-image flex-shrink-0">
+  <div class="auth-image">
     <img src="assets/images/auth-1.jpg" alt="Choose Account Type" />
   </div>
+
   <!-- Top Right: Login/Signup -->
   <div class="auth-header position-absolute top-0 end-0 p-4 d-flex gap-3">
-    <button class="btn btn-outline-primary rounded-pill px-4">Login</button>
-    <button class="btn btn-primary rounded-pill px-4">Sign up</button>
+    <a [routerLink]="['../login']" class="btn btn-outline-primary rounded-pill px-4">Login</a>
+    <a [routerLink]="['../signup']" class="btn btn-primary rounded-pill px-4">Sign up</a>
   </div>
+
   <!-- Center Logo -->
   <div class="auth-logo position-absolute top-0 start-50 translate-middle-x p-4">
     <img src="assets/images/logo.svg" alt="Logo" height="48" />

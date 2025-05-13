@@ -1,30 +1,44 @@
-<div class="auth-wrapper d-flex flex-row">
+<div class="auth-wrapper">
   <!-- Left: Form Section -->
-  <div class="auth-form flex-grow-1 d-flex flex-column justify-content-between p-5">
+  <div class="auth-form">
     <div>
       <button class="menu-btn btn btn-light mb-4"><i class="bi bi-sliders"></i> Menu</button>
       <h1 class="title mb-2">Confirm OTP ...</h1>
       <p class="subtitle mb-4">Enter the code sent to your email or phone to verify your identity.</p>
+
       <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
-        <div class="otp-inputs d-flex gap-3 mb-4">
-          <input maxlength="1" type="text" class="form-control otp-box text-center" *ngFor="let ctrl of otpControls; let i = index" [formControlName]="'otp' + i" />
+        <div class="otp-inputs d-flex justify-content-center gap-3 mb-4">
+          <ng-container *ngFor="let i of otpControls">
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-input text-center"
+              [formControlName]="'otp' + i"
+              [ngClass]="{'is-invalid': otpForm.get('otp' + i)?.invalid && otpForm.get('otp' + i)?.touched}"
+            />
+          </ng-container>
         </div>
-        <button class="btn btn-primary btn-lg w-100 fw-bold confirm-otp-btn" type="submit">Confirm OTP</button>
+
+        <button class="btn btn-primary btn-lg w-100 fw-bold confirm-btn" type="submit">Confirm OTP</button>
       </form>
+
       <div class="text-center mt-4">
-        <span class="text-muted">Didn't receive the code? <a href="#" class="resend-link">Resend OTP</a></span>
+        <span class="text-muted">Didn't receive the code? <a href="javascript:void(0)" class="resend-link" (click)="resendOtp()">Resend OTP</a></span>
       </div>
     </div>
   </div>
+
   <!-- Right: Image Section -->
-  <div class="auth-image flex-shrink-0">
+  <div class="auth-image">
     <img src="assets/images/auth-1.jpg" alt="Confirm OTP" />
   </div>
+
   <!-- Top Right: Login/Signup -->
   <div class="auth-header position-absolute top-0 end-0 p-4 d-flex gap-3">
-    <button class="btn btn-outline-primary rounded-pill px-4">Login</button>
-    <button class="btn btn-primary rounded-pill px-4">Sign up</button>
+    <a [routerLink]="['../login']" class="btn btn-outline-primary rounded-pill px-4">Login</a>
+    <a [routerLink]="['../signup']" class="btn btn-primary rounded-pill px-4">Sign up</a>
   </div>
+
   <!-- Center Logo -->
   <div class="auth-logo position-absolute top-0 start-50 translate-middle-x p-4">
     <img src="assets/images/logo.svg" alt="Logo" height="48" />

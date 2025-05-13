@@ -1,26 +1,20 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, TranslateModule]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
-  private router = inject(Router);
-
   loginForm!: FormGroup;
-  isLoading = false;
   showPassword = false;
-  loginError = '';
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -29,14 +23,9 @@ export class LoginComponent implements OnInit {
   initForm(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required]],
       rememberMe: [false]
     });
-  }
-
-  isFieldInvalid(fieldName: string): boolean {
-    const field = this.loginForm.get(fieldName);
-    return field ? (field.invalid && (field.dirty || field.touched)) : false;
   }
 
   togglePasswordVisibility(): void {
@@ -44,24 +33,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.loginForm.invalid) {
-      // Mark all fields as touched to trigger validation
-      Object.keys(this.loginForm.controls).forEach(key => {
-        this.loginForm.get(key)?.markAsTouched();
-      });
-      return;
+    if (this.loginForm.valid) {
+      console.log('Form submitted:', this.loginForm.value);
+      // Will add actual submission logic
+    } else {
+      this.markFormGroupTouched(this.loginForm);
     }
+  }
 
-    this.isLoading = true;
-    this.loginError = '';
-
-    // In a real application, you would call your auth service here
-    // For now, let's just simulate a login
-    setTimeout(() => {
-      this.isLoading = false;
-      // Simulate successful login
-      alert('Login successful!');
-      this.router.navigate(['/']);
-    }, 1500);
+  markFormGroupTouched(formGroup: FormGroup): void {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
 }

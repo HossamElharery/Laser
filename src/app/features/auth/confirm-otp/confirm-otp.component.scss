@@ -1,4 +1,4 @@
-@import 'src/assets/scss/variables.scss';
+@use '../../../../assets/scss/variables.scss' as *;
 
 .auth-wrapper {
   min-height: 100vh;
@@ -6,56 +6,90 @@
   border-radius: $border-radius-xl;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+
   .auth-form {
     max-width: 600px;
     flex: 1 1 0%;
     background: transparent;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     .title {
       font-family: $font-family-heading;
       font-size: $font-size-xxl;
       font-weight: $font-weight-bold;
       color: $text-dark;
     }
+
     .subtitle {
       color: $text-gray;
       font-size: $font-size-lg;
       margin-bottom: $spacer-4;
     }
+
     .otp-inputs {
-      justify-content: flex-start;
-      .otp-box {
+      .otp-input {
         width: 60px;
         height: 60px;
         font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
         border-radius: $border-radius-lg;
-        border: $border-width solid $border-color;
+        padding: $spacer-2;
         background: $white;
-        margin-right: $spacer-2;
+        border: $border-width solid $border-color;
+        box-shadow: none;
+        text-align: center;
+
         &:focus {
           border-color: $primary-blue;
           box-shadow: $shadow-sm;
         }
+
+        &.is-invalid {
+          border-color: $danger-color;
+        }
+
+        // Hide spinner arrows for number inputs
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        // Firefox
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
       }
     }
-    .confirm-otp-btn {
+
+    .confirm-btn {
       background: $primary-blue;
       border-radius: $border-radius-pill;
       font-size: $font-size-lg;
       padding: $spacer-3 0;
       border: none;
+
       &:hover {
         background: darken($primary-blue, 5%);
       }
     }
+
     .resend-link {
       color: $primary-blue;
       font-weight: $font-weight-semibold;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
     }
   }
+
   .auth-image {
     width: 40vw;
     min-width: 400px;
@@ -64,6 +98,7 @@
     align-items: center;
     justify-content: center;
     background: transparent;
+
     img {
       width: 100%;
       height: 100vh;
@@ -71,15 +106,19 @@
       border-radius: $border-radius-xl;
     }
   }
+
   .auth-header {
     z-index: 10;
-    button {
+
+    .btn {
       font-weight: $font-weight-medium;
       font-size: $font-size-lg;
     }
   }
+
   .auth-logo {
     z-index: 10;
+
     img {
       height: 48px;
     }
@@ -89,19 +128,28 @@
 @media (max-width: $breakpoint-lg) {
   .auth-wrapper {
     flex-direction: column;
+
     .auth-image {
       width: 100%;
       min-width: unset;
       max-width: unset;
       height: 250px;
+
       img {
         height: 250px;
       }
     }
-    .auth-form .otp-inputs .otp-box {
-      width: 40px;
-      height: 40px;
-      font-size: $font-size-lg;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .auth-form {
+    .otp-inputs {
+      .otp-input {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: $font-size-lg !important;
+      }
     }
   }
 }

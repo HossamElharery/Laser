@@ -1,0 +1,142 @@
+@use '../../../../assets/scss/variables.scss' as *;
+
+.auth-wrapper {
+  min-height: 100vh;
+  background: $light-color;
+  border-radius: $border-radius-xl;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+
+  .auth-form {
+    max-width: 600px;
+    flex: 1 1 0%;
+    background: transparent;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      font-family: $font-family-heading;
+      font-size: $font-size-xxl;
+      font-weight: $font-weight-bold;
+      color: $text-dark;
+    }
+
+    .subtitle {
+      color: $text-gray;
+      font-size: $font-size-lg;
+      margin-bottom: $spacer-4;
+    }
+
+    .form-control, .form-select {
+      border-radius: $border-radius-lg;
+      font-size: $font-size-lg;
+      padding: $spacer-3 $spacer-4;
+      background: $white;
+      border: $border-width solid $border-color;
+      box-shadow: none;
+
+      &:focus {
+        border-color: $primary-blue;
+        box-shadow: $shadow-sm;
+      }
+
+      &.is-invalid {
+        border-color: $danger-color;
+      }
+    }
+
+    .input-group-text {
+      border-radius: $border-radius-lg 0 0 $border-radius-lg;
+      background: $white;
+      border: $border-width solid $border-color;
+
+      .flag-icon {
+        height: 16px;
+        margin-right: 5px;
+      }
+    }
+
+    .toggle-password {
+      cursor: pointer;
+      color: $icon-color;
+      font-size: $font-size-xl;
+    }
+
+    .signup-btn {
+      background: $primary-blue;
+      border-radius: $border-radius-pill;
+      font-size: $font-size-lg;
+      padding: $spacer-3 0;
+      border: none;
+
+      &:hover {
+        background: darken($primary-blue, 5%);
+      }
+    }
+
+    .login-link {
+      color: $primary-blue;
+      font-weight: $font-weight-semibold;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .auth-image {
+    width: 40vw;
+    min-width: 400px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      border-radius: $border-radius-xl;
+    }
+  }
+
+  .auth-header {
+    z-index: 10;
+
+    .btn {
+      font-weight: $font-weight-medium;
+      font-size: $font-size-lg;
+    }
+  }
+
+  .auth-logo {
+    z-index: 10;
+
+    img {
+      height: 48px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .auth-wrapper {
+    flex-direction: column;
+
+    .auth-image {
+      width: 100%;
+      min-width: unset;
+      max-width: unset;
+      height: 250px;
+
+      img {
+        height: 250px;
+      }
+    }
+  }
+}

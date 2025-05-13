@@ -1,20 +1,2 @@
-<div class="auth-layout">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <div class="card shadow-lg border-0 rounded-lg mt-5">
-          <div class="card-body p-5">
-            <router-outlet></router-outlet>
-          </div>
-          <div class="card-footer text-center py-3">
-            <div class="small">
-              <a [routerLink]="['/']" class="text-decoration-none">
-                <i class="bi bi-arrow-left me-1"></i> {{ 'common.home' | translate }}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+<router-outlet></router-outlet>
