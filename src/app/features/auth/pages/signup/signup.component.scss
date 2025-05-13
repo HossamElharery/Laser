@@ -1,4 +1,4 @@
-@use '../../../../assets/scss/variables.scss' as *;
+@use '../../../../../assets/scss/variables.scss' as *;
 
 .auth-wrapper {
   min-height: 100vh;
@@ -31,43 +31,42 @@
       margin-bottom: $spacer-4;
     }
 
-    .otp-inputs {
-      .otp-input {
-        width: 60px;
-        height: 60px;
-        font-size: $font-size-xl;
-        font-weight: $font-weight-bold;
-        border-radius: $border-radius-lg;
-        padding: $spacer-2;
-        background: $white;
-        border: $border-width solid $border-color;
-        box-shadow: none;
-        text-align: center;
+    .form-control, .form-select {
+      border-radius: $border-radius-lg;
+      font-size: $font-size-lg;
+      padding: $spacer-3 $spacer-4;
+      background: $white;
+      border: $border-width solid $border-color;
+      box-shadow: none;
 
-        &:focus {
-          border-color: $primary-blue;
-          box-shadow: $shadow-sm;
-        }
+      &:focus {
+        border-color: $primary-blue;
+        box-shadow: $shadow-sm;
+      }
 
-        &.is-invalid {
-          border-color: $danger-color;
-        }
-
-        // Hide spinner arrows for number inputs
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-
-        // Firefox
-        &[type=number] {
-          -moz-appearance: textfield;
-        }
+      &.is-invalid {
+        border-color: $danger-color;
       }
     }
 
-    .confirm-btn {
+    .input-group-text {
+      border-radius: $border-radius-lg 0 0 $border-radius-lg;
+      background: $white;
+      border: $border-width solid $border-color;
+
+      .flag-icon {
+        height: 16px;
+        margin-right: 5px;
+      }
+    }
+
+    .toggle-password {
+      cursor: pointer;
+      color: $icon-color;
+      font-size: $font-size-xl;
+    }
+
+    .signup-btn {
       background: $primary-blue;
       border-radius: $border-radius-pill;
       font-size: $font-size-lg;
@@ -79,7 +78,7 @@
       }
     }
 
-    .resend-link {
+    .login-link {
       color: $primary-blue;
       font-weight: $font-weight-semibold;
       text-decoration: none;
@@ -137,18 +136,6 @@
 
       img {
         height: 250px;
-      }
-    }
-  }
-}
-
-@media (max-width: $breakpoint-md) {
-  .auth-form {
-    .otp-inputs {
-      .otp-input {
-        width: 40px !important;
-        height: 40px !important;
-        font-size: $font-size-lg !important;
       }
     }
   }

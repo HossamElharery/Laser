@@ -1,4 +1,4 @@
-@use '../../../../assets/scss/variables.scss' as *;
+@use '../../../../../assets/scss/variables.scss' as *;
 
 .auth-wrapper {
   min-height: 100vh;
@@ -31,42 +31,35 @@
       margin-bottom: $spacer-4;
     }
 
-    .form-control, .form-select {
-      border-radius: $border-radius-lg;
-      font-size: $font-size-lg;
-      padding: $spacer-3 $spacer-4;
-      background: $white;
-      border: $border-width solid $border-color;
-      box-shadow: none;
+    .account-type-list {
+      .account-type-card {
+        background: $white;
+        border: $border-width solid $border-color;
+        border-radius: $border-radius-lg;
+        cursor: pointer;
+        transition: $transition-base;
 
-      &:focus {
-        border-color: $primary-blue;
-        box-shadow: $shadow-sm;
-      }
+        .icon {
+          color: $primary-blue;
+        }
 
-      &.is-invalid {
-        border-color: $danger-color;
+        .desc {
+          color: $text-gray;
+          font-size: $font-size-sm;
+        }
+
+        &.selected {
+          background: $gray-light;
+          border-color: $primary-blue;
+        }
+
+        &:hover {
+          box-shadow: $shadow-sm;
+        }
       }
     }
 
-    .input-group-text {
-      border-radius: $border-radius-lg 0 0 $border-radius-lg;
-      background: $white;
-      border: $border-width solid $border-color;
-
-      .flag-icon {
-        height: 16px;
-        margin-right: 5px;
-      }
-    }
-
-    .toggle-password {
-      cursor: pointer;
-      color: $icon-color;
-      font-size: $font-size-xl;
-    }
-
-    .signup-btn {
+    .continue-btn {
       background: $primary-blue;
       border-radius: $border-radius-pill;
       font-size: $font-size-lg;
@@ -75,16 +68,6 @@
 
       &:hover {
         background: darken($primary-blue, 5%);
-      }
-    }
-
-    .login-link {
-      color: $primary-blue;
-      font-weight: $font-weight-semibold;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

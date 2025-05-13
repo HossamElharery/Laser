@@ -8,35 +8,35 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
-        loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
+        loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
       },
       {
         path: 'signup',
-        loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent)
+        loadComponent: () => import('./pages/signup/signup.component').then(m => m.SignupComponent)
       },
       {
         path: 'choose-account-type',
-        loadComponent: () => import('./choose-account-type/choose-account-type.component').then(m => m.ChooseAccountTypeComponent)
+        loadComponent: () => import('./pages/choose-account-type/choose-account-type.component').then(m => m.ChooseAccountTypeComponent)
       },
       {
         path: 'create-account-step2',
-        loadComponent: () => import('./create-account-step2/create-account-step2.component').then(m => m.CreateAccountStep2Component)
+        loadComponent: () => import('./pages/create-account-step2/create-account-step2.component').then(m => m.CreateAccountStep2Component)
       },
       {
         path: 'signup-success',
-        loadComponent: () => import('./signup-success/signup-success.component').then(m => m.SignupSuccessComponent)
+        loadComponent: () => import('./pages/signup-success/signup-success.component').then(m => m.SignupSuccessComponent)
       },
       {
         path: 'reset-password',
-        loadComponent: () => import('./reset-password/reset-password.component').then(m => m.ResetPasswordComponent)
+        loadComponent: () => import('./pages/reset-password/reset-password.component').then(m => m.ResetPasswordComponent)
       },
       {
         path: 'forgot-password',
-        loadComponent: () => import('./forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
+        loadComponent: () => import('./pages/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
       },
       {
         path: 'confirm-otp',
-        loadComponent: () => import('./confirm-otp/confirm-otp.component').then(m => m.ConfirmOtpComponent)
+        loadComponent: () => import('./pages/confirm-otp/confirm-otp.component').then(m => m.ConfirmOtpComponent)
       },
       {
         path: '**',
