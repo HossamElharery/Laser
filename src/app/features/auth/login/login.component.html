@@ -1,101 +1,41 @@
-<div class="text-center mb-4">
-  <h4 class="fw-bold">{{ 'auth.login.title' | translate }}</h4>
-  <p class="text-muted">{{ 'auth.login.subtitle' | translate }}</p>
+<div class="auth-wrapper d-flex flex-row">
+  <!-- Left: Form Section -->
+  <div class="auth-form flex-grow-1 d-flex flex-column justify-content-between p-5">
+    <div>
+      <button class="menu-btn btn btn-light mb-4"><i class="bi bi-sliders"></i> Menu</button>
+      <h1 class="title mb-2">Login ...</h1>
+      <p class="subtitle mb-4">Access your account to manage bookings and stay connected.</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <input type="email" formControlName="email" class="form-control form-control-lg" placeholder="E-mail" />
+        </div>
+        <div class="mb-3 position-relative">
+          <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control form-control-lg" placeholder="Password" />
+          <span class="toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" (click)="togglePasswordVisibility()">
+            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </span>
+        </div>
+        <div class="d-flex justify-content-end mb-4">
+          <a [routerLink]="['../forgot-password']" class="forgot-link">Forget Password ?</a>
+        </div>
+        <button class="btn btn-primary btn-lg w-100 fw-bold login-btn" type="submit">Login</button>
+      </form>
+      <div class="text-center mt-4">
+        <span class="text-muted">Don't have an account? <a [routerLink]="['../signup']" class="signup-link">Sign up now</a></span>
+      </div>
+    </div>
+  </div>
+  <!-- Right: Image Section -->
+  <div class="auth-image flex-shrink-0">
+    <img src="assets/images/auth-1.jpg" alt="Login" />
+  </div>
+  <!-- Top Right: Login/Signup -->
+  <div class="auth-header position-absolute top-0 end-0 p-4 d-flex gap-3">
+    <button class="btn btn-outline-primary rounded-pill px-4">Login</button>
+    <button class="btn btn-primary rounded-pill px-4">Sign up</button>
+  </div>
+  <!-- Center Logo -->
+  <div class="auth-logo position-absolute top-0 start-50 translate-middle-x p-4">
+    <img src="assets/images/logo.svg" alt="Logo" height="48" />
+  </div>
 </div>
-
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <!-- Email Input -->
-  <div class="mb-3">
-    <label for="email" class="form-label">{{ 'auth.login.email' | translate }}</label>
-    <div class="input-group">
-      <span class="input-group-text">
-        <i class="bi bi-envelope"></i>
-      </span>
-      <input
-        type="email"
-        id="email"
-        formControlName="email"
-        class="form-control"
-        [placeholder]="'auth.login.emailPlaceholder' | translate"
-        [ngClass]="{'is-invalid': isFieldInvalid('email')}"
-      >
-    </div>
-    <div *ngIf="isFieldInvalid('email')" class="invalid-feedback d-block">
-      <span *ngIf="loginForm.get('email')?.errors?.['required']">
-        {{ 'validation.required' | translate }}
-      </span>
-      <span *ngIf="loginForm.get('email')?.errors?.['email']">
-        {{ 'validation.invalidEmail' | translate }}
-      </span>
-    </div>
-  </div>
-
-  <!-- Password Input -->
-  <div class="mb-3">
-    <label for="password" class="form-label">{{ 'auth.login.password' | translate }}</label>
-    <div class="input-group">
-      <span class="input-group-text">
-        <i class="bi bi-lock"></i>
-      </span>
-      <input
-        [type]="showPassword ? 'text' : 'password'"
-        id="password"
-        formControlName="password"
-        class="form-control"
-        [placeholder]="'auth.login.passwordPlaceholder' | translate"
-        [ngClass]="{'is-invalid': isFieldInvalid('password')}"
-      >
-      <button
-      aria-label="Name"
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="togglePasswordVisibility()"
-        tabindex="-1"
-      >
-        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
-      </button>
-    </div>
-    <div *ngIf="isFieldInvalid('password')" class="invalid-feedback d-block">
-      <span *ngIf="loginForm.get('password')?.errors?.['required']">
-        {{ 'validation.required' | translate }}
-      </span>
-      <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
-        {{ 'validation.minLength' | translate:{ length: 6 } }}
-      </span>
-    </div>
-  </div>
-
-  <!-- Remember Me & Forgot Password -->
-  <div class="d-flex justify-content-between mb-4">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" formControlName="rememberMe" id="rememberMe">
-      <label class="form-check-label" for="rememberMe">
-        {{ 'auth.login.rememberMe' | translate }}
-      </label>
-    </div>
-    <a [routerLink]="['../reset-password']" class="text-decoration-none">
-      {{ 'auth.login.forgetPassword' | translate }}
-    </a>
-  </div>
-
-  <!-- Submit Button -->
-  <div class="mb-4">
-    <button
-      type="submit"
-      class="btn btn-primary w-100"
-      [disabled]="loginForm.invalid || isLoading"
-    >
-      <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-      {{ 'auth.login.title' | translate }}
-    </button>
-  </div>
-
-  <!-- No Account -->
-  <div class="text-center">
-    <p>{{ 'auth.login.noAccount' | translate }}
-      <a [routerLink]="['../signup']" class="text-decoration-none">
-        {{ 'auth.login.signupNow' | translate }}
-      </a>
-    </p>
-  </div>
-</form>

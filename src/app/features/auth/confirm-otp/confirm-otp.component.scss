@@ -1,4 +1,4 @@
-@use '../../../../assets/scss/variables.scss' as *;
+@import 'src/assets/scss/variables.scss';
 
 .auth-wrapper {
   min-height: 100vh;
@@ -21,32 +21,23 @@
       font-size: $font-size-lg;
       margin-bottom: $spacer-4;
     }
-    .form-control {
-      border-radius: $border-radius-lg;
-      font-size: $font-size-lg;
-      padding: $spacer-3 $spacer-4;
-      background: $white;
-      border: $border-width solid $border-color;
-      box-shadow: none;
-      &:focus {
-        border-color: $primary-blue;
-        box-shadow: $shadow-sm;
+    .otp-inputs {
+      justify-content: flex-start;
+      .otp-box {
+        width: 60px;
+        height: 60px;
+        font-size: $font-size-xl;
+        border-radius: $border-radius-lg;
+        border: $border-width solid $border-color;
+        background: $white;
+        margin-right: $spacer-2;
+        &:focus {
+          border-color: $primary-blue;
+          box-shadow: $shadow-sm;
+        }
       }
     }
-    .toggle-password {
-      cursor: pointer;
-      color: $icon-color;
-      font-size: $font-size-xl;
-    }
-    .forgot-link {
-      color: $primary-blue;
-      font-weight: $font-weight-semibold;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    .login-btn {
+    .confirm-otp-btn {
       background: $primary-blue;
       border-radius: $border-radius-pill;
       font-size: $font-size-lg;
@@ -56,7 +47,7 @@
         background: darken($primary-blue, 5%);
       }
     }
-    .signup-link {
+    .resend-link {
       color: $primary-blue;
       font-weight: $font-weight-semibold;
       text-decoration: none;
@@ -106,6 +97,11 @@
       img {
         height: 250px;
       }
+    }
+    .auth-form .otp-inputs .otp-box {
+      width: 40px;
+      height: 40px;
+      font-size: $font-size-lg;
     }
   }
 }
