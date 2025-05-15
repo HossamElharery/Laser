@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+// create-account-step2.component.ts
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { LanguageService } from '../../../../core/services/language.service';
+import { AuthNavBarComponent } from '../../shared/auth-nav-bar/auth-nav-bar.component';
 
 @Component({
   selector: 'app-create-account-step2',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, AuthNavBarComponent],
   templateUrl: './create-account-step2.component.html',
-  styleUrl: './create-account-step2.component.scss'
+  styleUrls: ['./create-account-step2.component.scss']
 })
 export class CreateAccountStep2Component implements OnInit {
   clinicForm!: FormGroup;
   showPassword = false;
 
-  constructor(private fb: FormBuilder) {}
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private languageService = inject(LanguageService);
+
+  currentLanguage = this.languageService.currentLanguage;
+  isRtl = this.languageService.isRtl;
 
   ngOnInit(): void {
     this.initForm();
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLanguage = lang;
+      this.isRtl = this.languageService.isRtl;
+    });
   }
 
   initForm(): void {
@@ -38,7 +51,8 @@ export class CreateAccountStep2Component implements OnInit {
   onSubmit(): void {
     if (this.clinicForm.valid) {
       console.log('Form submitted:', this.clinicForm.value);
-      // Will add actual submission logic
+      // After successful form submission, redirect to success page
+      this.router.navigate(['/', this.currentLanguage, 'auth', 'signup-success']);
     } else {
       this.markFormGroupTouched(this.clinicForm);
     }

@@ -1,24 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+// reset-password.component.ts
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { LanguageService } from '../../../../core/services/language.service';
+import { AuthNavBarComponent } from '../../shared/auth-nav-bar/auth-nav-bar.component';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, AuthNavBarComponent],
   templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.scss'
+  styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
   resetForm!: FormGroup;
   showPassword = false;
   showConfirmPassword = false;
 
-  constructor(private fb: FormBuilder) {}
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private languageService = inject(LanguageService);
+
+  currentLanguage = this.languageService.currentLanguage;
+  isRtl = this.languageService.isRtl;
 
   ngOnInit(): void {
     this.initForm();
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLanguage = lang;
+      this.isRtl = this.languageService.isRtl;
+    });
   }
 
   initForm(): void {
@@ -46,7 +59,8 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit(): void {
     if (this.resetForm.valid) {
       console.log('Form submitted:', this.resetForm.value);
-      // Will add actual submission logic
+      // After successful password reset, redirect to login page
+      this.router.navigate(['/', this.currentLanguage, 'auth', 'login']);
     } else {
       this.markFormGroupTouched(this.resetForm);
     }

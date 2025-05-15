@@ -1,90 +1,108 @@
-<div class="auth-wrapper">
-  <!-- Left: Form Section -->
-  <div class="auth-form">
-    <div>
-      <button class="menu-btn btn btn-light mb-4"><i class="bi bi-sliders"></i> Menu</button>
-      <h1 class="title mb-2">Create Account ...</h1>
-      <p class="subtitle mb-4">Create your account to explore clinics and book your treatments effortlessly</p>
+<!-- signup.component.html -->
+<div class="auth-container">
+  <!-- Auth Nav Bar -->
+  <app-auth-nav-bar></app-auth-nav-bar>
 
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <input
-            type="text"
-            formControlName="fullName"
-            class="form-control form-control-lg"
-            placeholder="Full Name"
-            [ngClass]="{'is-invalid': signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched}"
-          />
-        </div>
+  <div class="container-fluid h-100 p-0">
+    <div class="row h-100 g-0">
+      <!-- Left Form Section -->
+      <div class="col-lg-6">
+        <div class="auth-form-wrapper d-flex align-items-center justify-content-center">
+          <div class="auth-form-content">
+            <h1 class="title mb-2">Create Account...</h1>
+            <p class="subtitle mb-4">Create your account to explore clinics and book your treatments effortlessly</p>
 
-        <div class="mb-3">
-          <input
-            type="email"
-            formControlName="email"
-            class="form-control form-control-lg"
-            placeholder="E-Mail"
-            [ngClass]="{'is-invalid': signupForm.get('email')?.invalid && signupForm.get('email')?.touched}"
-          />
-        </div>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  class="form-control form-control-lg"
+                  placeholder="Full Name"
+                  [ngClass]="{'is-invalid': signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="signupForm.get('fullName')?.errors?.['required'] && signupForm.get('fullName')?.touched">
+                  Full name is required
+                </div>
+              </div>
 
-        <div class="mb-3">
-          <select
-            formControlName="gender"
-            class="form-select form-select-lg"
-            [ngClass]="{'is-invalid': signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched}"
-          >
-            <option value="" disabled selected>Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control form-control-lg"
+                  placeholder="E-Mail"
+                  [ngClass]="{'is-invalid': signupForm.get('email')?.invalid && signupForm.get('email')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched">
+                  Email is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched">
+                  Please enter a valid email address
+                </div>
+              </div>
 
-        <div class="mb-3">
-          <div class="input-group input-group-lg">
-            <span class="input-group-text">
-              <img src="../../../../assets/images/eg-flag.png" alt="Egypt Flag" class="flag-icon">
-              <span formControlName="phoneCode">(20)</span>
-            </span>
-            <input type="tel" class="form-control" placeholder="Phone Number">
+              <div class="mb-3">
+                <select
+                  formControlName="gender"
+                  class="form-select form-select-lg"
+                  [ngClass]="{'is-invalid': signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched}"
+                >
+                  <option value="" disabled selected>Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="signupForm.get('gender')?.errors?.['required'] && signupForm.get('gender')?.touched">
+                  Gender is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text">
+                    <img src="assets/images/flags/eg-flag.png" alt="Egypt Flag" class="flag-icon">
+                    <span formControlName="phoneCode">(20)</span>
+                  </span>
+                  <input type="tel" class="form-control" placeholder="Phone Number">
+                </div>
+              </div>
+
+              <div class="mb-4 position-relative">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  class="form-control form-control-lg"
+                  placeholder="Password"
+                  [ngClass]="{'is-invalid': signupForm.get('password')?.invalid && signupForm.get('password')?.touched}"
+                />
+                <span class="toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" (click)="togglePasswordVisibility()">
+                  <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </span>
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched">
+                  Password is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched">
+                  Password must be at least 8 characters
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg w-100 fw-bold signup-btn" type="submit">Sign Up</button>
+            </form>
+
+            <div class="text-center mt-4">
+              <span class="text-muted">Have an account? <a [routerLink]="['/', currentLanguage, 'auth', 'login']" class="login-link">Login</a></span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="mb-4 position-relative">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            formControlName="password"
-            class="form-control form-control-lg"
-            placeholder="Password"
-            [ngClass]="{'is-invalid': signupForm.get('password')?.invalid && signupForm.get('password')?.touched}"
-          />
-          <span class="toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" (click)="togglePasswordVisibility()">
-            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
-          </span>
+      <!-- Right Image Section -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="auth-image-wrapper h-100">
+          <img src="../../../../../assets/images/auth/up.jpg" alt="Create Account" class="auth-image" />
         </div>
-
-        <button class="btn btn-primary btn-lg w-100 fw-bold signup-btn" type="submit">Sign Up</button>
-      </form>
-
-      <div class="text-center mt-4">
-        <span class="text-muted">Have an account? <a [routerLink]="['../login']" class="login-link">Login</a></span>
       </div>
     </div>
-  </div>
-
-  <!-- Right: Image Section -->
-  <div class="auth-image">
-    <img src="../../../../assets/images/auth-1.jpg" alt="Create Account" />
-  </div>
-
-  <!-- Top Right: Login/Signup -->
-  <div class="auth-header position-absolute top-0 end-0 p-4 d-flex gap-3">
-    <a [routerLink]="['../login']" class="btn btn-outline-primary rounded-pill px-4">Login</a>
-    <a [routerLink]="['../signup']" class="btn btn-primary rounded-pill px-4">Sign up</a>
-  </div>
-
-  <!-- Center Logo -->
-  <div class="auth-logo position-absolute top-0 start-50 translate-middle-x p-4">
-    <img src="../../../../assets/images/logo.svg" alt="Logo" height="48" />
   </div>
 </div>

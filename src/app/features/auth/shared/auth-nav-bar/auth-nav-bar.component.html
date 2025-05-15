@@ -1,1 +1,27 @@
-<p>auth-nav-bar works!</p>
+ <div class="auth-navbar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <!-- Menu Button -->
+      <div class="col-4">
+        <button class="menu-btn btn btn-light" (click)="toggleMenu()">
+          <i class="bi bi-sliders"></i> Menu
+        </button>
+      </div>
+
+      <!-- Center Logo -->
+      <div class="col-4 text-center">
+        <div class="auth-logo">
+          <img src="assets/imgs/logo.png" alt="Logo" height="48" />
+        </div>
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="col-4 d-flex justify-content-end">
+        <div class="auth-buttons">
+          <a [routerLink]="['/', currentLanguage, 'auth', 'login']" class="btn btn-outline-primary rounded-pill px-4 me-2">Login</a>
+          <a [routerLink]="['/', currentLanguage, 'auth', 'signup']" class="btn btn-primary rounded-pill px-4">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

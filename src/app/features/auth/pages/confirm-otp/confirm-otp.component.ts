@@ -1,26 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+// confirm-otp.component.ts
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { LanguageService } from '../../../../core/services/language.service';
+import { AuthNavBarComponent } from '../../shared/auth-nav-bar/auth-nav-bar.component';
 
 @Component({
   selector: 'app-confirm-otp',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, AuthNavBarComponent],
   templateUrl: './confirm-otp.component.html',
-  styleUrl: './confirm-otp.component.scss'
+  styleUrls: ['./confirm-otp.component.scss']
 })
 export class ConfirmOtpComponent implements OnInit {
   otpForm!: FormGroup;
   otpLength = 6;
   otpControls: number[] = [];
 
-  constructor(private fb: FormBuilder) {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private languageService = inject(LanguageService);
+
+  currentLanguage = this.languageService.currentLanguage;
+  isRtl = this.languageService.isRtl;
+
+  constructor() {
     this.otpControls = Array(this.otpLength).fill(0).map((_, i) => i);
   }
 
   ngOnInit(): void {
     this.initForm();
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLanguage = lang;
+      this.isRtl = this.languageService.isRtl;
+    });
+
+    // Auto-focus on input fields
+    this.setupOtpInputAutoFocus();
   }
 
   initForm(): void {
@@ -29,15 +47,10 @@ export class ConfirmOtpComponent implements OnInit {
       controls[`otp${i}`] = ['', [Validators.required, Validators.pattern(/^[0-9]$/)]];
     }
     this.otpForm = this.fb.group(controls);
-
-    // Auto-focus on input fields
-    this.setupOtpInputAutoFocus();
   }
 
   setupOtpInputAutoFocus(): void {
     if (typeof document !== 'undefined') {
-      // Note: We need to add this listener after the view is initialized
-      // This would typically be added in ngAfterViewInit, but for simplicity I'm putting it here
       setTimeout(() => {
         const otpInputs = document.querySelectorAll('.otp-input');
         otpInputs.forEach((input, index) => {
@@ -74,7 +87,8 @@ export class ConfirmOtpComponent implements OnInit {
         .join('');
 
       console.log('OTP submitted:', otpValue);
-      // Will add actual submission logic
+      // After successful OTP verification, redirect to reset password page
+      this.router.navigate(['/', this.currentLanguage, 'auth', 'reset-password']);
     } else {
       this.markFormGroupTouched(this.otpForm);
     }
@@ -91,6 +105,6 @@ export class ConfirmOtpComponent implements OnInit {
 
   resendOtp(): void {
     console.log('Resending OTP...');
-    // Will add actual resend logic
+    // Logic to resend OTP would go here
   }
 }

@@ -1,22 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+// forgot-password.component.ts
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { LanguageService } from '../../../../core/services/language.service';
+import { AuthNavBarComponent } from '../../shared/auth-nav-bar/auth-nav-bar.component';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, AuthNavBarComponent],
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.scss'
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private languageService = inject(LanguageService);
+
+  currentLanguage = this.languageService.currentLanguage;
+  isRtl = this.languageService.isRtl;
 
   ngOnInit(): void {
     this.initForm();
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLanguage = lang;
+      this.isRtl = this.languageService.isRtl;
+    });
   }
 
   initForm(): void {
@@ -28,7 +41,9 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit(): void {
     if (this.forgotForm.valid) {
       console.log('Form submitted:', this.forgotForm.value);
-      // Will add actual submission logic
+      // In a real application, we would send an OTP to the user's email
+      // and then navigate to the confirm OTP page
+      this.router.navigate(['/', this.currentLanguage, 'auth', 'confirm-otp']);
     } else {
       this.markFormGroupTouched(this.forgotForm);
     }

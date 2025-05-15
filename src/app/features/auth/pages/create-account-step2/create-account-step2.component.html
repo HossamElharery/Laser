@@ -1,118 +1,118 @@
-<div class="auth-wrapper">
-  <!-- Left: Form Section -->
-  <div class="auth-form">
-    <div>
-      <button class="menu-btn btn btn-light mb-4"><i class="bi bi-sliders"></i> Menu</button>
-      <h1 class="title mb-2">Create Account ...</h1>
-      <p class="subtitle mb-4">Create your account to explore clinics and book your treatments effortlessly</p>
+<!-- create-account-step2.component.html -->
+<div class="auth-container">
+  <!-- Auth Nav Bar -->
+  <app-auth-nav-bar></app-auth-nav-bar>
 
-      <form [formGroup]="clinicForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <input
-            type="text"
-            formControlName="fullName"
-            class="form-control form-control-lg"
-            placeholder="Full Name"
-            [ngClass]="{'is-invalid': clinicForm.get('fullName')?.invalid && clinicForm.get('fullName')?.touched}"
-          />
-          <div class="invalid-feedback" *ngIf="clinicForm.get('fullName')?.errors?.['required'] && clinicForm.get('fullName')?.touched">
-            Full name is required
+  <div class="container-fluid h-100 p-0">
+    <div class="row h-100 g-0">
+      <!-- Left Form Section -->
+      <div class="col-lg-6">
+        <div class="auth-form-wrapper d-flex align-items-center justify-content-center">
+          <div class="auth-form-content">
+            <h1 class="title mb-2">Create Account...</h1>
+            <p class="subtitle mb-4">Create your clinic account to showcase your services and grow your practice</p>
+
+            <form [formGroup]="clinicForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  class="form-control form-control-lg"
+                  placeholder="Full Name"
+                  [ngClass]="{'is-invalid': clinicForm.get('fullName')?.invalid && clinicForm.get('fullName')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="clinicForm.get('fullName')?.errors?.['required'] && clinicForm.get('fullName')?.touched">
+                  Full name is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="text"
+                  formControlName="clinicName"
+                  class="form-control form-control-lg"
+                  placeholder="Clinic Name"
+                  [ngClass]="{'is-invalid': clinicForm.get('clinicName')?.invalid && clinicForm.get('clinicName')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="clinicForm.get('clinicName')?.errors?.['required'] && clinicForm.get('clinicName')?.touched">
+                  Clinic name is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control form-control-lg"
+                  placeholder="E-Mail"
+                  [ngClass]="{'is-invalid': clinicForm.get('email')?.invalid && clinicForm.get('email')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="clinicForm.get('email')?.errors?.['required'] && clinicForm.get('email')?.touched">
+                  Email is required
+                </div>
+                <div class="invalid-feedback" *ngIf="clinicForm.get('email')?.errors?.['email'] && clinicForm.get('email')?.touched">
+                  Please enter a valid email address
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="text"
+                  formControlName="clinicAddress"
+                  class="form-control form-control-lg"
+                  placeholder="Clinic Address"
+                  [ngClass]="{'is-invalid': clinicForm.get('clinicAddress')?.invalid && clinicForm.get('clinicAddress')?.touched}"
+                />
+                <div class="invalid-feedback" *ngIf="clinicForm.get('clinicAddress')?.errors?.['required'] && clinicForm.get('clinicAddress')?.touched">
+                  Clinic address is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text">
+                    <img src="assets/images/flags/eg-flag.png" alt="Egypt Flag" class="flag-icon">
+                    <span formControlName="phoneCode">(20)</span>
+                  </span>
+                  <input type="tel" class="form-control" placeholder="Phone Number">
+                </div>
+              </div>
+
+              <div class="mb-4 position-relative">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  class="form-control form-control-lg"
+                  placeholder="Password"
+                  [ngClass]="{'is-invalid': clinicForm.get('password')?.invalid && clinicForm.get('password')?.touched}"
+                />
+                <span class="toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" (click)="togglePasswordVisibility()">
+                  <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </span>
+                <div class="invalid-feedback" *ngIf="clinicForm.get('password')?.errors?.['required'] && clinicForm.get('password')?.touched">
+                  Password is required
+                </div>
+                <div class="invalid-feedback" *ngIf="clinicForm.get('password')?.errors?.['minlength'] && clinicForm.get('password')?.touched">
+                  Password must be at least 8 characters
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg w-100 fw-bold signup-btn" type="submit">Sign Up</button>
+            </form>
+
+            <div class="text-center mt-4">
+              <span class="text-muted">Have an account? <a [routerLink]="['/', currentLanguage, 'auth', 'login']" class="login-link">Login</a></span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="mb-3">
-          <input
-            type="text"
-            formControlName="clinicName"
-            class="form-control form-control-lg"
-            placeholder="Clinic Name"
-            [ngClass]="{'is-invalid': clinicForm.get('clinicName')?.invalid && clinicForm.get('clinicName')?.touched}"
-          />
-          <div class="invalid-feedback" *ngIf="clinicForm.get('clinicName')?.errors?.['required'] && clinicForm.get('clinicName')?.touched">
-            Clinic name is required
-          </div>
+      <!-- Right Image Section -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="auth-image-wrapper h-100">
+          <img src="../../../../../assets/images/auth/up.jpg" alt="Create Clinic Account" class="auth-image" />
         </div>
-
-        <div class="mb-3">
-          <input
-            type="email"
-            formControlName="email"
-            class="form-control form-control-lg"
-            placeholder="E-Mail"
-            [ngClass]="{'is-invalid': clinicForm.get('email')?.invalid && clinicForm.get('email')?.touched}"
-          />
-          <div class="invalid-feedback" *ngIf="clinicForm.get('email')?.errors?.['required'] && clinicForm.get('email')?.touched">
-            Email is required
-          </div>
-          <div class="invalid-feedback" *ngIf="clinicForm.get('email')?.errors?.['email'] && clinicForm.get('email')?.touched">
-            Please enter a valid email address
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <input
-            type="text"
-            formControlName="clinicAddress"
-            class="form-control form-control-lg"
-            placeholder="Clinic Address"
-            [ngClass]="{'is-invalid': clinicForm.get('clinicAddress')?.invalid && clinicForm.get('clinicAddress')?.touched}"
-          />
-          <div class="invalid-feedback" *ngIf="clinicForm.get('clinicAddress')?.errors?.['required'] && clinicForm.get('clinicAddress')?.touched">
-            Clinic address is required
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <div class="input-group input-group-lg">
-            <span class="input-group-text">
-              <img src="../../../../assets/images/" alt="Egypt Flag" class="flag-icon">
-              <span formControlName="phoneCode">(20)</span>
-            </span>
-            <input type="tel" class="form-control" placeholder="Phone Number">
-          </div>
-        </div>
-
-        <div class="mb-4 position-relative">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            formControlName="password"
-            class="form-control form-control-lg"
-            placeholder="Password"
-            [ngClass]="{'is-invalid': clinicForm.get('password')?.invalid && clinicForm.get('password')?.touched}"
-          />
-          <span class="toggle-password position-absolute top-50 end-0 translate-middle-y pe-3" (click)="togglePasswordVisibility()">
-            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
-          </span>
-          <div class="invalid-feedback" *ngIf="clinicForm.get('password')?.errors?.['required'] && clinicForm.get('password')?.touched">
-            Password is required
-          </div>
-          <div class="invalid-feedback" *ngIf="clinicForm.get('password')?.errors?.['minlength'] && clinicForm.get('password')?.touched">
-            Password must be at least 8 characters
-          </div>
-        </div>
-
-        <button class="btn btn-primary btn-lg w-100 fw-bold signup-btn" type="submit">Sign Up</button>
-      </form>
-
-      <div class="text-center mt-4">
-        <span class="text-muted">Have an account? <a [routerLink]="['../login']" class="login-link">Login</a></span>
       </div>
     </div>
-  </div>
-
-  <!-- Right: Image Section -->
-  <div class="auth-image">
-    <img src="assets/images/auth-1.jpg" alt="Create Account" />
-  </div>
-
-  <!-- Top Right: Login/Signup -->
-  <div class="auth-header position-absolute top-0 end-0 p-4 d-flex gap-3">
-    <a [routerLink]="['../login']" class="btn btn-outline-primary rounded-pill px-4">Login</a>
-    <a [routerLink]="['../signup']" class="btn btn-primary rounded-pill px-4">Sign up</a>
-  </div>
-
-  <!-- Center Logo -->
-  <div class="auth-logo position-absolute top-0 start-50 translate-middle-x p-4">
-    <img src="assets/images/logo.svg" alt="Logo" height="48" />
   </div>
 </div>

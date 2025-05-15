@@ -1,0 +1,127 @@
+// auth-nav-bar.component.scss
+@use '../../../../../assets/scss/variables.scss' as *;
+
+.auth-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 1rem 0;
+  background-color: white;
+
+}
+
+.menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f8f9fa;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e9ecef;
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.auth-logo {
+  display: inline-block;
+
+  img {
+    height: 48px;
+    width: auto;
+  }
+}
+
+.auth-buttons {
+  .btn {
+    font-weight: 500;
+  }
+
+  .btn-outline-primary {
+    color: $primary-blue;
+    border-color: $primary-blue;
+
+    &:hover {
+      background-color: $primary-blue;
+      color: white;
+    }
+  }
+
+  .btn-primary {
+    background-color: $primary-blue;
+    border-color: $primary-blue;
+
+    &:hover {
+      background-color: darken($primary-blue, 10%);
+      border-color: darken($primary-blue, 10%);
+    }
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  .menu-btn i {
+    margin-left: 0.25rem;
+    margin-right: 0;
+  }
+
+  .auth-buttons {
+    .btn:first-child {
+      margin-right: 0;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .auth-buttons {
+    .btn {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  .menu-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .auth-logo img {
+    height: 36px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auth-navbar {
+    padding: 1rem 0;
+  }
+
+  .auth-buttons {
+    .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  .menu-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+
+    i {
+      font-size: 0.875rem;
+    }
+  }
+
+  .auth-logo img {
+    height: 30px;
+  }
+}
